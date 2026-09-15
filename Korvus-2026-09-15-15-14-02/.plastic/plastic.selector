@@ -1,4 +1,0 @@
-repository "Korvus/Korvus@9071710012515@cloud"
-  path "/"
-    br "/main"
-    co "/main"

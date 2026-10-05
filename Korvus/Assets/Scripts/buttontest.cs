@@ -11,7 +11,7 @@ public class buttontest : MonoBehaviour
 
 
     bool buttonenabled = false;
-    int ButtonCooldown = 60;
+    int ButtonCooldown = 15;
     public Material ButtonEnabled;
     public Material ButtonDisabled;
 
@@ -29,26 +29,27 @@ public class buttontest : MonoBehaviour
     }
     void FixedUpdate()
     {
-        ButtonCooldown -= 1;
+        ButtonCooldown = ButtonCooldown - 1;
     }
 
     public void ButtonToggle() 
     {
-        if (ButtonCooldown <= 0)
-        {
+        
             // Code to lower the button
-            if (buttonenabled == false)
+            if (buttonenabled == false && ButtonCooldown <= 0)
             {
-                this.transform.parent.localPosition = new Vector3(this.transform.parent.localPosition.x, this.transform.parent.localPosition.y - 0.01f, this.transform.parent.localPosition.z);
+                this.transform.parent.transform.Find("Mesh").localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y - 0.1f, this.transform.localPosition.z);
                 this.transform.parent.GetComponentInChildren<Renderer>().material = ButtonEnabled;
                 buttonenabled = true;
+                ButtonCooldown = 15;
             }
-            else if (buttonenabled == true)
+            else if (buttonenabled == true && ButtonCooldown <= 0)
             {
-                this.transform.parent.localPosition = new Vector3(this.transform.parent.localPosition.x, this.transform.parent.localPosition.y + 0.01f, this.transform.parent.localPosition.z);
+                this.transform.parent.transform.Find("Mesh").localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y + 0.1f, this.transform.localPosition.z);
                 this.transform.parent.GetComponentInChildren<Renderer>().material = ButtonDisabled;
                 buttonenabled = false;
+                ButtonCooldown = 15;
             }
-        }
+        
     }
 }

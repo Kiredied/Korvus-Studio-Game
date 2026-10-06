@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Anchor
   - Minimap_Camera
+  - 2DPlayer
+  - CurrentDangerZone
+  - PreviousDangerZone
+  - DangerWalls
+  - DeathWalls
   layers:
   - Default
   - TransparentFX

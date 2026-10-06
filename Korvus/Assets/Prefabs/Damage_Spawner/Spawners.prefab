@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5777760295728012411}
-  - component: {fileID: 2327201899039831615}
+  - component: {fileID: 4263538871327772729}
   m_Layer: 0
   m_Name: Spawners
   m_TagString: Untagged
@@ -98,7 +98,7 @@ Transform:
   - {fileID: 3448713779366631283}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2327201899039831615
+--- !u!114 &4263538871327772729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,10 +107,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5398767870984112816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e74d2937e9c000f4895810fff87b0c9c, type: 3}
+  m_Script: {fileID: 11500000, guid: f9f2c4416a3365e4485ecc3957f0126d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PrefabSpawner
-  damagedPart: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::ZeppelinDamageSpawner
+  damagedPart: {fileID: 1408913262184848852, guid: 7c96c243ee52e9a49bb1c3c6128afb91, type: 3}
   spawnInterval: 7
 --- !u!1 &7031601288976480378
 GameObject:

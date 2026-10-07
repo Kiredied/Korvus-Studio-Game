@@ -498,6 +498,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3477357622857922371}
     m_Modifications:
+    - target: {fileID: 4628075377290695480, guid: 55b9951af05f02747b2f9632e1cbcd57, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 326ff4d86fe0fae41ac77237a438cd26, type: 2}
     - target: {fileID: 8088061148760294293, guid: 55b9951af05f02747b2f9632e1cbcd57, type: 3}
       propertyPath: m_Name
       value: ButtonArrowRight
@@ -789,6 +793,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3477357622857922371}
     m_Modifications:
+    - target: {fileID: 4628075377290695480, guid: 401f107b3bb66b54b800ad2930cb3656, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 326ff4d86fe0fae41ac77237a438cd26, type: 2}
     - target: {fileID: 8088061148760294293, guid: 401f107b3bb66b54b800ad2930cb3656, type: 3}
       propertyPath: m_Name
       value: ButtonArrowLeft
@@ -991,6 +999,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3477357622857922371}
     m_Modifications:
+    - target: {fileID: 4628075377290695480, guid: e8025ff855ecc834383a7f24ae89ee54, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 326ff4d86fe0fae41ac77237a438cd26, type: 2}
     - target: {fileID: 8088061148760294293, guid: e8025ff855ecc834383a7f24ae89ee54, type: 3}
       propertyPath: m_Name
       value: ButtonArrowForward

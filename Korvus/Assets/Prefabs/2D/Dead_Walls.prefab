@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1957974791761837688}
   - component: {fileID: 1088741431872294869}
   - component: {fileID: 2438086489831368962}
+  - component: {fileID: 398434274458393026}
   m_Layer: 0
   m_Name: Dead_Wall_North
   m_TagString: DeathWalls
@@ -112,6 +113,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &398434274458393026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3172411142586489103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09b8ceac50f2d84a938416bb0ab1a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DangerZone2D
 --- !u!1 &3567071806309794588
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +137,7 @@ GameObject:
   - component: {fileID: 8230068424871022105}
   - component: {fileID: 7562727265879968147}
   - component: {fileID: 6741733463731128115}
+  - component: {fileID: 4703648714612540910}
   m_Layer: 0
   m_Name: Dead_Wall_West
   m_TagString: DeathWalls
@@ -224,6 +238,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4703648714612540910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3567071806309794588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09b8ceac50f2d84a938416bb0ab1a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DangerZone2D
 --- !u!1 &3647789925012145530
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +261,7 @@ GameObject:
   - component: {fileID: 6855785328922012038}
   m_Layer: 0
   m_Name: Dead_Walls
-  m_TagString: Untagged
+  m_TagString: DeathWalls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -271,6 +297,7 @@ GameObject:
   - component: {fileID: 7169390185481466635}
   - component: {fileID: 1698367957721016162}
   - component: {fileID: 6081267870179816004}
+  - component: {fileID: 1967425830345938916}
   m_Layer: 0
   m_Name: Dead_Wall_East
   m_TagString: DeathWalls
@@ -371,6 +398,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1967425830345938916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7366899622114743833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09b8ceac50f2d84a938416bb0ab1a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DangerZone2D
 --- !u!1 &7754627081884267736
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +422,7 @@ GameObject:
   - component: {fileID: 5503492014810438324}
   - component: {fileID: 4693803797206332239}
   - component: {fileID: 528267323397824048}
+  - component: {fileID: 5918387606078829924}
   m_Layer: 0
   m_Name: Dead_Wall_South
   m_TagString: DeathWalls
@@ -483,3 +523,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5918387606078829924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7754627081884267736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09b8ceac50f2d84a938416bb0ab1a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DangerZone2D

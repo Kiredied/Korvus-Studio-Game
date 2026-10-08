@@ -14,17 +14,17 @@ public class ZeppelinLighting : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (DangerZone2D.PreviousDangerZone)
+        if (DangerZone2D.DeadZone)
         {
-            lightComponent.color = new Color(120f/255f, 120f/255f, 65f/255f);
+            lightComponent.color = Color.black;
         }
         else if (DangerZone2D.DangerZone)
         {
             lightComponent.color = new Color(115f/255f, 0, 0);
         }
-        else if (DangerZone2D.DeadZone)
+        else if (DangerZone2D.PreviousDangerZone)
         {
-            lightComponent.color = Color.black;
+            lightComponent.color = new Color(120f / 255f, 120f / 255f, 65f / 255f);
         }
         else
         {

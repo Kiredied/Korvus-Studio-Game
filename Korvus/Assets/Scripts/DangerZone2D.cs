@@ -5,8 +5,11 @@ public class DangerZone2D : MonoBehaviour
 {
 
 
-    static public bool visible = false;
+    private bool visible = false;
     static public bool CanDoResearch = false;
+    static public bool PreviousDangerZone = false;
+    static public bool DangerZone = false;
+    static public bool DeadZone = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,17 +26,20 @@ public class DangerZone2D : MonoBehaviour
     {
         if (this.gameObject.CompareTag("CurrentDangerZone"))
         {
-            Debug.Log("CurrentDangerZone entered (yes current, not previous)");
+            
             if (other.CompareTag("2DPlayer"))
             {
+                Debug.Log("CurrentDangerZone entered (yes current, not previous)");
                 if (visible == false)
                 {
                     visible = true;
                     GetComponent<MeshRenderer>().enabled = true;
                 }
-                CanDoResearch = true;
                 // enable research
+                CanDoResearch = true;
+                DangerZone = true;
                 // notify player that they entered current danger zone
+
             }
         }
 
@@ -41,6 +47,7 @@ public class DangerZone2D : MonoBehaviour
         {
             Debug.Log("PreviousDangerZone entered");
             // notify player that they entered previous danger zone
+            PreviousDangerZone = true;
         }
 
 
@@ -48,11 +55,13 @@ public class DangerZone2D : MonoBehaviour
         {
             Debug.Log("DangerWalls entered");
             // give danger warning
+            DangerZone = true;
         }
         if (this.gameObject.CompareTag("DeathWalls"))
         {
             Debug.Log("DeathWalls entered");
             // give a very bad warning (like a jumpscare)
+            DeadZone = true;
         }
 
     }
@@ -65,6 +74,7 @@ public class DangerZone2D : MonoBehaviour
             if (other.CompareTag("2DPlayer"))
             {
                 CanDoResearch = false;
+                DangerZone = false;
                 // disable research
             }
         }
@@ -73,6 +83,7 @@ public class DangerZone2D : MonoBehaviour
         {
             Debug.Log("PreviousDangerZone exited");
             // do nothing
+            PreviousDangerZone = false;
         }
 
         
@@ -80,11 +91,15 @@ public class DangerZone2D : MonoBehaviour
         {
             Debug.Log("DangerWalls exited");
             // remove danger warning
+            DangerZone = false;
         }
         if (this.gameObject.CompareTag("DeathWalls"))
         {
             Debug.Log("DeathWalls exited");
             // kill player
+
+            DeadZone = false;
+
         }
     }
 }

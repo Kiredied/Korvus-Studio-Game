@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 public class DangerZone2D : MonoBehaviour
 {
 
-
+    private int DeathTimer;
+    static public bool DeathActivated = false;
     private bool visible = false;
     static public bool CanDoResearch = false;
     static public bool PreviousDangerZone = false;
@@ -13,13 +14,23 @@ public class DangerZone2D : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        DeathTimer = 0;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        // Physics update, so 50 FPS. 50 DeathTimer = 1 second. 
+        if (DeadZone)
+        {
+            DeathTimer += 1;
+            // If DeathTimer reaches 150 (3 secs), player dies.
+            if (DeathTimer >= 150)
+            {
+                if (!DeathActivated) ZeppelinMapMovement.Death();
+                DeathActivated = true;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -61,6 +72,8 @@ public class DangerZone2D : MonoBehaviour
         {
             Debug.Log("DeathWalls entered");
             // give a very bad warning (like a jumpscare)
+
+            ZeppelinMapMovement.DeathRotation = ZeppelinMapMovement.RigidBody2DZeppelin.rotation;
             DeadZone = true;
         }
 
@@ -96,9 +109,9 @@ public class DangerZone2D : MonoBehaviour
         if (this.gameObject.CompareTag("DeathWalls"))
         {
             Debug.Log("DeathWalls exited");
-            // kill player
-
+            // reset death timer and remove fatal warning
             DeadZone = false;
+            DeathTimer = 0;
 
         }
     }

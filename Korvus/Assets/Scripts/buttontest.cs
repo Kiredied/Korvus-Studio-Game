@@ -11,6 +11,7 @@ public class buttontest : MonoBehaviour
 
 
     bool buttonenabled = false;
+    static public bool resetbuttons = false;
     int ButtonCooldown = 15;
     public Material ButtonEnabled;
     public Material ButtonDisabled;
@@ -19,6 +20,9 @@ public class buttontest : MonoBehaviour
     static public bool ButtonForwardEnabled;
     static public bool ButtonLeftEnabled;
     static public bool ButtonRightEnabled;
+    static public GameObject buttonforward;
+    static public GameObject buttonleft;
+    static public GameObject buttonright;
 
     void OnEnable() => interactable.selectEntered.AddListener(OnSelect);
     void OnDisable() => interactable.selectEntered.RemoveListener(OnSelect);
@@ -33,9 +37,9 @@ public class buttontest : MonoBehaviour
         this.transform.parent.GetComponentInChildren<Renderer>().material = ButtonDisabled;
         sound = GetComponent<AudioSource>();
 
-        if (this.transform.parent.name == "ButtonArrowForward") { buttontype = "Forward"; }
-        else if(this.transform.parent.name == "ButtonArrowLeft") { buttontype = "Left"; }
-        else if (this.transform.parent.name == "ButtonArrowRight") { buttontype = "Right"; }
+        if (this.transform.parent.name == "ButtonArrowForward") { buttontype = "Forward"; buttonforward = this.gameObject; }
+        else if(this.transform.parent.name == "ButtonArrowLeft") { buttontype = "Left"; buttonleft = this.gameObject; }
+        else if (this.transform.parent.name == "ButtonArrowRight") { buttontype = "Right"; buttonright = this.gameObject; }
 
         
     }
@@ -47,30 +51,35 @@ public class buttontest : MonoBehaviour
 
     public void ButtonToggle() 
     {
-        
-            // Code to lower the button
-            if (buttonenabled == false && ButtonCooldown <= 0)
-            {
-                this.transform.parent.transform.Find("Mesh").localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y - 0.1f, this.transform.localPosition.z);
-                this.transform.parent.GetComponentInChildren<Renderer>().material = ButtonEnabled;
-                buttonenabled = true;
-                sound.Play();
-                if (buttontype == "Forward") { ButtonForwardEnabled = true; }
-                else if (buttontype == "Left") { ButtonLeftEnabled = true; }
-                else if (buttontype == "Right") { ButtonRightEnabled = true; }
+
+        // Code to lower the button
+
+        if (resetbuttons)
+        {
+            return;
+        }
+        else if (buttonenabled == false && ButtonCooldown <= 0)
+        {
+            this.transform.parent.transform.Find("Mesh").localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y - 0.1f, this.transform.localPosition.z);
+            this.transform.parent.GetComponentInChildren<Renderer>().material = ButtonEnabled;
+            buttonenabled = true;
+            sound.Play();
+            if (buttontype == "Forward") { ButtonForwardEnabled = true; }
+            else if (buttontype == "Left") { ButtonLeftEnabled = true; }
+            else if (buttontype == "Right") { ButtonRightEnabled = true; }
             ButtonCooldown = 15;
-            }
-            else if (buttonenabled == true && ButtonCooldown <= 0)
-            {
-                this.transform.parent.transform.Find("Mesh").localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y + 0.1f, this.transform.localPosition.z);
-                this.transform.parent.GetComponentInChildren<Renderer>().material = ButtonDisabled;
-                buttonenabled = false;
-                sound.Play();
-                if (buttontype == "Forward") { ButtonForwardEnabled = false; }
-                else if (buttontype == "Left") { ButtonLeftEnabled = false; }
-                else if (buttontype == "Right") { ButtonRightEnabled = false; }
+        }
+        else if (buttonenabled == true && ButtonCooldown <= 0)
+        {
+            this.transform.parent.transform.Find("Mesh").localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y + 0.1f, this.transform.localPosition.z);
+            this.transform.parent.GetComponentInChildren<Renderer>().material = ButtonDisabled;
+            buttonenabled = false;
+            sound.Play();
+            if (buttontype == "Forward") { ButtonForwardEnabled = false; }
+            else if (buttontype == "Left") { ButtonLeftEnabled = false; }
+            else if (buttontype == "Right") { ButtonRightEnabled = false; }
             ButtonCooldown = 15;
-            }
-        
+        }
+
+        }
     }
-}

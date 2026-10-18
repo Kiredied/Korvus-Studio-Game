@@ -22,9 +22,9 @@ TagManager:
   - Interactive
   - 
   - 
-  - 
-  - 
-  - 
+  - Camera2DExclusive
+  - MiniCamera2DExclusive
+  - FogCollision
   - 
   - 
   - 

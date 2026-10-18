@@ -168,5 +168,22 @@ public class FogSteering : MonoBehaviour
     {
         var emission = particleSystem.emission;
         emission.rateOverTime = rate;
+        CurrentParticleSystem = particleSystem.gameObject;
+        SetEmissionColor(CurrentColor1, CurrentColor2);
+    }
+    static private GameObject CurrentParticleSystem;
+    static private Color CurrentColor1 = new Color(77f/255f,77f/255f,77f/255f,50f/255f);
+    static private Color CurrentColor2 = new Color(60f/255f,60f/255f,60f/255f,50f/255f);
+    static public void SetEmissionColor(Color color1, Color color2)
+    {
+        if (CurrentParticleSystem == null)
+        {
+            Debug.LogWarning("CurrentParticleSystem is not set. Cannot change emission color.");
+            return;
+        }
+        var main = CurrentParticleSystem.GetComponent<ParticleSystem>().main;
+        main.startColor = new ParticleSystem.MinMaxGradient(color1, color2);
+        CurrentColor1 = color1;
+        CurrentColor2 = color2;
     }
 }

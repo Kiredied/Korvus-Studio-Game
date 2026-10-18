@@ -88,5 +88,6 @@ public class ZeppelinMapMovement : MonoBehaviour
         buttontest.ButtonRightEnabled = false;
         
         Debug.Log("Player deader than a corpse!!11!!!1!1 ohnoooooo :(((((");
+        DangerZone2D.ConsiousnessRemover = true;
     }
 }

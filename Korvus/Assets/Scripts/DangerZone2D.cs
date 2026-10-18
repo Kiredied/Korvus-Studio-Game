@@ -1,16 +1,21 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class DangerZone2D : MonoBehaviour
 {
+    
 
     private int DeathTimer;
     static public bool DeathActivated = false;
+    static public bool ConsiousnessRemover = false;
+
     private bool visible = false;
     static public bool CanDoResearch = false;
     static public bool PreviousDangerZone = false;
     static public bool DangerZone = false;
     static public bool DeadZone = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,9 +33,18 @@ public class DangerZone2D : MonoBehaviour
             if (DeathTimer >= 150)
             {
                 if (!DeathActivated) ZeppelinMapMovement.Death();
-                DeathActivated = true;
+                //DeathActivated = true;
+                /*DeathFlickering.StartMinimapFlicker();
+                DeathFlickering.StartMapFlicker();
+                DeathFlickering.StartLightsFlicker();*/
             }
         }
+    }
+    static public void StartFlickering(DeathFlickering instance)
+    {
+        instance.StartCoroutine(instance.MinimapFlicker());
+        instance.StartCoroutine(instance.MapFlicker());
+        instance.StartCoroutine(instance.LightsFlicker());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -75,6 +89,9 @@ public class DangerZone2D : MonoBehaviour
 
             ZeppelinMapMovement.DeathRotation = ZeppelinMapMovement.RigidBody2DZeppelin.rotation;
             DeadZone = true;
+            DeathFlickering.StartMinimapFlicker();
+            DeathFlickering.StartMapFlicker();
+            DeathFlickering.StartLightsFlicker();
         }
 
     }
@@ -112,7 +129,8 @@ public class DangerZone2D : MonoBehaviour
             // reset death timer and remove fatal warning
             DeadZone = false;
             DeathTimer = 0;
-
+            DeathFlickering.StopAllFlickering();
         }
     }
+
 }

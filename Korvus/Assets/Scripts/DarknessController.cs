@@ -25,7 +25,7 @@ public class DarknessController : MonoBehaviour
     {
         // 50 fps
 
-        if (DangerZone2D.DeathActivated)
+        if (DangerZone2D.ConsiousnessRemover)
         { 
             if (!log) Debug.Log("Fading consciousness. (Post-Processing)"); log = true;
 

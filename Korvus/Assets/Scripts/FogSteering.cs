@@ -1,4 +1,6 @@
+using System.Drawing;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class FogSteering : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class FogSteering : MonoBehaviour
     [SerializeField] private GameObject fogLeftSlowParent;
     [SerializeField] private GameObject fogRightParent;
     [SerializeField] private GameObject fogRightSlowParent;
+
+    [SerializeField] private VisualEffect testVisualEffect;
 
     private float defaultEmissionRateForwardSlow;
     private float defaultEmissionRateForward;
@@ -45,6 +49,8 @@ public class FogSteering : MonoBehaviour
         fogRightSlow.Play();
 
         // Initially disable all emission
+        testVisualEffect.SetFloat("ForwardEmissionRate", 0.8f);
+        testVisualEffect.SetFloat("SidewardEmissionRate", 0f);
         SetEmissionRate(fogForwardSlow, 0f);
         SetEmissionRate(fogForward, 0f);
         SetEmissionRate(fogLeft, 0f);
@@ -79,6 +85,7 @@ public class FogSteering : MonoBehaviour
                 SetEmissionRate(fogLeftSlow, 0f);
                 SetEmissionRate(fogRight, 0f);
                 SetEmissionRate(fogRightSlow, 0f);
+                //testVisualEffect.SetFloat("ForwardEmissionSpeed", defaultEmissionRateForwardSlow);
             }
             else if (isFast)
             {
@@ -88,6 +95,7 @@ public class FogSteering : MonoBehaviour
                 SetEmissionRate(fogLeftSlow, 0f);
                 SetEmissionRate(fogRight, 0f);
                 SetEmissionRate(fogRightSlow, 0f);
+                //testVisualEffect.SetFloat("ForwardEmissionSpeed", defaultEmissionRateForward);
             }
         }
         else
@@ -103,6 +111,7 @@ public class FogSteering : MonoBehaviour
                     SetEmissionRate(fogLeftSlow, 0f);
                     SetEmissionRate(fogRight, 0f);
                     SetEmissionRate(fogRightSlow, 0f);
+                    //testVisualEffect.SetFloat("ForwardEmissionSpeed", defaultEmissionRateForwardSlow);
                 }
                 else if (isFast)
                 {
@@ -112,6 +121,7 @@ public class FogSteering : MonoBehaviour
                     SetEmissionRate(fogLeftSlow, 0f);
                     SetEmissionRate(fogRight, 0f);
                     SetEmissionRate(fogRightSlow, 0f);
+                    //testVisualEffect.SetFloat("ForwardEmissionSpeed", defaultEmissionRateForward);
                 }
             }
             else
@@ -127,6 +137,7 @@ public class FogSteering : MonoBehaviour
                         SetEmissionRate(fogLeftSlow, defaultEmissionRateLeftSlow);
                         SetEmissionRate(fogRight, 0f);
                         SetEmissionRate(fogRightSlow, 0f);
+                        //testVisualEffect.SetFloat("SidewardEmissionSpeed", defaultEmissionRateLeftSlow);
                     }
                     else if (isFast)
                     {
@@ -136,6 +147,7 @@ public class FogSteering : MonoBehaviour
                         SetEmissionRate(fogLeftSlow, 0f);
                         SetEmissionRate(fogRight, 0f);
                         SetEmissionRate(fogRightSlow, 0f);
+                        //testVisualEffect.SetFloat("SidewardEmissionSpeed", defaultEmissionRateLeft);
                     }
                 }
                 if (buttontest.ButtonRightEnabled)
@@ -149,6 +161,7 @@ public class FogSteering : MonoBehaviour
                         SetEmissionRate(fogLeftSlow, 0f);
                         SetEmissionRate(fogRight, 0f);
                         SetEmissionRate(fogRightSlow, defaultEmissionRateRightSlow);
+                        //testVisualEffect.SetFloat("SidewardEmissionSpeed", defaultEmissionRateRightSlow);
                     }
                     else if (isFast)
                     {
@@ -158,6 +171,7 @@ public class FogSteering : MonoBehaviour
                         SetEmissionRate(fogLeftSlow, 0f);
                         SetEmissionRate(fogRight, defaultEmissionRateRight);
                         SetEmissionRate(fogRightSlow, 0f);
+                        //testVisualEffect.SetFloat("SidewardEmissionSpeed", defaultEmissionRateRight);
                     }
                 }
             }
@@ -171,10 +185,14 @@ public class FogSteering : MonoBehaviour
         CurrentParticleSystem = particleSystem.gameObject;
         SetEmissionColor(CurrentColor1, CurrentColor2);
     }
+
+
     static private GameObject CurrentParticleSystem;
-    static private Color CurrentColor1 = new Color(77f/255f,77f/255f,77f/255f,50f/255f);
-    static private Color CurrentColor2 = new Color(60f/255f,60f/255f,60f/255f,50f/255f);
-    static public void SetEmissionColor(Color color1, Color color2)
+    static private UnityEngine.Color CurrentColor1 = new UnityEngine.Color(77f/255f,77f/255f,77f/255f,50f/255f);
+    static private UnityEngine.Color CurrentColor2 = new UnityEngine.Color(60f/255f,60f/255f,60f/255f,50f/255f);
+
+
+    public void SetEmissionColor(UnityEngine.Color color1, UnityEngine.Color color2)
     {
         if (CurrentParticleSystem == null)
         {
@@ -183,6 +201,13 @@ public class FogSteering : MonoBehaviour
         }
         var main = CurrentParticleSystem.GetComponent<ParticleSystem>().main;
         main.startColor = new ParticleSystem.MinMaxGradient(color1, color2);
+        testVisualEffect.SetFloat("ColorRMin", color1.r);
+        testVisualEffect.SetFloat("ColorGMin", color1.g);
+        testVisualEffect.SetFloat("ColorBMin", color1.b);
+        testVisualEffect.SetFloat("ColorRMax", color2.r);
+        testVisualEffect.SetFloat("ColorGMax", color2.g);
+        testVisualEffect.SetFloat("ColorBMax", color2.b);
+
         CurrentColor1 = color1;
         CurrentColor2 = color2;
     }

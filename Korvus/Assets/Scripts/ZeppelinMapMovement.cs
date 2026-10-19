@@ -36,6 +36,11 @@ public class ZeppelinMapMovement : MonoBehaviour
             }
 
 
+            var mult = buttontest.ButtonForwardEnabled? speed : speed / 3;
+            RigidBody2DZeppelin.linearVelocity = RigidBody2DZeppelin.transform.forward * mult;
+
+
+
             if (buttontest.ButtonLeftEnabled && buttontest.ButtonRightEnabled)
             {
                 // both steering buttons pressed, cancel out rotation

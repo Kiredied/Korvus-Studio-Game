@@ -89,9 +89,12 @@ public class DangerZone2D : MonoBehaviour
 
             ZeppelinMapMovement.DeathRotation = ZeppelinMapMovement.RigidBody2DZeppelin.rotation;
             DeadZone = true;
-            DeathFlickering.StartMinimapFlicker();
+           /* DeathFlickering.StartMinimapFlicker();
             DeathFlickering.StartMapFlicker();
-            DeathFlickering.StartLightsFlicker();
+            DeathFlickering.StartLightsFlicker();*/
+            DeathFlickering.instance.StartCoroutine(DeathFlickering.instance.MinimapFlicker());
+            DeathFlickering.instance.StartCoroutine(DeathFlickering.instance.MapFlicker());
+            DeathFlickering.instance.StartCoroutine(DeathFlickering.instance.LightsFlicker());
         }
 
     }
@@ -129,7 +132,7 @@ public class DangerZone2D : MonoBehaviour
             // reset death timer and remove fatal warning
             DeadZone = false;
             DeathTimer = 0;
-            DeathFlickering.StopAllFlickering();
+            DeathFlickering.instance.StopAllFlickering();
         }
     }
 

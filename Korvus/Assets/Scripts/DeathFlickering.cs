@@ -9,7 +9,7 @@ public class DeathFlickering : MonoBehaviour
     [SerializeField] private GameObject MiniMapFlickerObject;
     [SerializeField] private GameObject MapFlickerObject;
     
-    static private DeathFlickering instance;
+    static public DeathFlickering instance;
 
     /*static public void StartFlickering(DangerZone2D instance)
     {
@@ -68,10 +68,18 @@ public class DeathFlickering : MonoBehaviour
             DangerZone2D.DeathActivated = false;
         }
     }
+    public void StopAllFlickering()
+    {
+
+        StopCoroutine(instance.MinimapFlicker());
+        StopCoroutine(instance.MapFlicker());
+        StopCoroutine(instance.LightsFlicker());
+
+    }
 
     // Static methods to control coroutines from other scripts
 
-    static public void StartMinimapFlicker()
+    /*static public void StartMinimapFlicker()
     {
         if (instance != null)
             instance.StartCoroutine(instance.MinimapFlicker());
@@ -87,15 +95,7 @@ public class DeathFlickering : MonoBehaviour
     {
         if (instance != null)
             instance.StartCoroutine(instance.LightsFlicker());
-    }
+    }*/
 
-    static public void StopAllFlickering()
-    {
-        if (instance != null)
-        {
-            instance.StopCoroutine(instance.MinimapFlicker());
-            instance.StopCoroutine(instance.MapFlicker());
-            instance.StopCoroutine(instance.LightsFlicker());
-        }
-    }
+
 }

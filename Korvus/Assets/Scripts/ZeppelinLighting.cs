@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ZeppelinLighting : MonoBehaviour
 {
+    [SerializeField] private FogSteering FogSteering;
+
     public Light lightComponent;
     [SerializeField, UnityEngine.Range(1f,10f)] private float ColorChangeSpeedSlider = 5f;
     private float ColorChangeSpeed;

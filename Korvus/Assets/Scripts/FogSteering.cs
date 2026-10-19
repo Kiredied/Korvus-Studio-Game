@@ -49,14 +49,23 @@ public class FogSteering : MonoBehaviour
         fogRightSlow.Play();
 
         // Initially disable all emission
-        testVisualEffect.SetFloat("ForwardEmissionRate", 0.8f);
-        testVisualEffect.SetFloat("SidewardEmissionRate", 0f);
+        testVisualEffect.SetFloat("ForwardEmissionSpeed", 0.8f);
+        testVisualEffect.SetFloat("SidewardEmissionSpeed", 0f);
         SetEmissionRate(fogForwardSlow, 0f);
         SetEmissionRate(fogForward, 0f);
         SetEmissionRate(fogLeft, 0f);
         SetEmissionRate(fogLeftSlow, 0f);
         SetEmissionRate(fogRight, 0f);
         SetEmissionRate(fogRightSlow, 0f);
+
+        testVisualEffect.SetFloat("ColorRMin", 77f/255f);
+        testVisualEffect.SetFloat("ColorGMin", 77f/255f);
+        testVisualEffect.SetFloat("ColorBMin", 77f/255f);
+        testVisualEffect.SetFloat("ColorRMax", 60f/255f);
+        testVisualEffect.SetFloat("ColorGMax", 60f/255f);
+        testVisualEffect.SetFloat("ColorBMax", 60f/255f);
+
+
     }
 
     void FixedUpdate()
@@ -79,23 +88,25 @@ public class FogSteering : MonoBehaviour
             // both steering buttons pressed, cancel out rotation
             if (isSlow)
             {
-                SetEmissionRate(fogForwardSlow, defaultEmissionRateForwardSlow);
+                /*SetEmissionRate(fogForwardSlow, defaultEmissionRateForwardSlow);
                 SetEmissionRate(fogForward, 0f);
                 SetEmissionRate(fogLeft, 0f);
                 SetEmissionRate(fogLeftSlow, 0f);
                 SetEmissionRate(fogRight, 0f);
-                SetEmissionRate(fogRightSlow, 0f);
-                //testVisualEffect.SetFloat("ForwardEmissionSpeed", defaultEmissionRateForwardSlow);
+                SetEmissionRate(fogRightSlow, 0f);*/
+                testVisualEffect.SetFloat("ForwardEmissionSpeed", .5f);
+                testVisualEffect.SetFloat("SidewardEmissionSpeed", 0f);
             }
             else if (isFast)
             {
-                SetEmissionRate(fogForwardSlow, 0f);
+                /*SetEmissionRate(fogForwardSlow, 0f);
                 SetEmissionRate(fogForward, defaultEmissionRateForward);
                 SetEmissionRate(fogLeft, 0f);
                 SetEmissionRate(fogLeftSlow, 0f);
                 SetEmissionRate(fogRight, 0f);
-                SetEmissionRate(fogRightSlow, 0f);
-                //testVisualEffect.SetFloat("ForwardEmissionSpeed", defaultEmissionRateForward);
+                SetEmissionRate(fogRightSlow, 0f);*/
+                testVisualEffect.SetFloat("ForwardEmissionSpeed", 1f);
+                testVisualEffect.SetFloat("SidewardEmissionSpeed", 0f);
             }
         }
         else
@@ -105,23 +116,25 @@ public class FogSteering : MonoBehaviour
                 // no steering buttons pressed, no rotation
                 if (isSlow)
                 {
-                    SetEmissionRate(fogForwardSlow, defaultEmissionRateForwardSlow);
+                    /*SetEmissionRate(fogForwardSlow, defaultEmissionRateForwardSlow);
                     SetEmissionRate(fogForward, 0f);
                     SetEmissionRate(fogLeft, 0f);
                     SetEmissionRate(fogLeftSlow, 0f);
                     SetEmissionRate(fogRight, 0f);
-                    SetEmissionRate(fogRightSlow, 0f);
-                    //testVisualEffect.SetFloat("ForwardEmissionSpeed", defaultEmissionRateForwardSlow);
+                    SetEmissionRate(fogRightSlow, 0f);*/
+                    testVisualEffect.SetFloat("ForwardEmissionSpeed", .5f);
+                    testVisualEffect.SetFloat("SidewardEmissionSpeed", 0f);
                 }
                 else if (isFast)
                 {
-                    SetEmissionRate(fogForwardSlow, 0f);
+                    /*SetEmissionRate(fogForwardSlow, 0f);
                     SetEmissionRate(fogForward, defaultEmissionRateForward);
                     SetEmissionRate(fogLeft, 0f);
                     SetEmissionRate(fogLeftSlow, 0f);
                     SetEmissionRate(fogRight, 0f);
-                    SetEmissionRate(fogRightSlow, 0f);
-                    //testVisualEffect.SetFloat("ForwardEmissionSpeed", defaultEmissionRateForward);
+                    SetEmissionRate(fogRightSlow, 0f);*/
+                    testVisualEffect.SetFloat("ForwardEmissionSpeed", 1f);
+                    testVisualEffect.SetFloat("SidewardEmissionSpeed", 0f);
                 }
             }
             else
@@ -131,23 +144,25 @@ public class FogSteering : MonoBehaviour
                     // left steering button pressed, rotate left
                     if (isSlow)
                     {
-                        SetEmissionRate(fogForwardSlow, 0f);
+                        /*SetEmissionRate(fogForwardSlow, 0f);
                         SetEmissionRate(fogForward, 0f);
                         SetEmissionRate(fogLeft, 0f);
                         SetEmissionRate(fogLeftSlow, defaultEmissionRateLeftSlow);
                         SetEmissionRate(fogRight, 0f);
-                        SetEmissionRate(fogRightSlow, 0f);
-                        //testVisualEffect.SetFloat("SidewardEmissionSpeed", defaultEmissionRateLeftSlow);
+                        SetEmissionRate(fogRightSlow, 0f);*/
+                        testVisualEffect.SetFloat("ForwardEmissionSpeed", .5f);
+                        testVisualEffect.SetFloat("SidewardEmissionSpeed", -.5f);
                     }
                     else if (isFast)
                     {
-                        SetEmissionRate(fogForwardSlow, 0f);
+                        /*SetEmissionRate(fogForwardSlow, 0f);
                         SetEmissionRate(fogForward, 0f);
                         SetEmissionRate(fogLeft, defaultEmissionRateLeft);
                         SetEmissionRate(fogLeftSlow, 0f);
                         SetEmissionRate(fogRight, 0f);
-                        SetEmissionRate(fogRightSlow, 0f);
-                        //testVisualEffect.SetFloat("SidewardEmissionSpeed", defaultEmissionRateLeft);
+                        SetEmissionRate(fogRightSlow, 0f);*/
+                        testVisualEffect.SetFloat("ForwardEmissionSpeed", 1f);
+                        testVisualEffect.SetFloat("SidewardEmissionSpeed", -.5f);
                     }
                 }
                 if (buttontest.ButtonRightEnabled)
@@ -155,23 +170,25 @@ public class FogSteering : MonoBehaviour
                     // right steering button pressed, rotate right
                     if (isSlow)
                     {
-                        SetEmissionRate(fogForwardSlow, 0f);
+                        /*SetEmissionRate(fogForwardSlow, 0f);
                         SetEmissionRate(fogForward, 0f);
                         SetEmissionRate(fogLeft, 0f);
                         SetEmissionRate(fogLeftSlow, 0f);
                         SetEmissionRate(fogRight, 0f);
-                        SetEmissionRate(fogRightSlow, defaultEmissionRateRightSlow);
-                        //testVisualEffect.SetFloat("SidewardEmissionSpeed", defaultEmissionRateRightSlow);
+                        SetEmissionRate(fogRightSlow, defaultEmissionRateRightSlow);*/
+                        testVisualEffect.SetFloat("ForwardEmissionSpeed", .5f);
+                        testVisualEffect.SetFloat("SidewardEmissionSpeed", .5f);
                     }
                     else if (isFast)
                     {
-                        SetEmissionRate(fogForwardSlow, 0f);
+                        /*SetEmissionRate(fogForwardSlow, 0f);
                         SetEmissionRate(fogForward, 0f);
                         SetEmissionRate(fogLeft, 0f);
                         SetEmissionRate(fogLeftSlow, 0f);
                         SetEmissionRate(fogRight, defaultEmissionRateRight);
-                        SetEmissionRate(fogRightSlow, 0f);
-                        //testVisualEffect.SetFloat("SidewardEmissionSpeed", defaultEmissionRateRight);
+                        SetEmissionRate(fogRightSlow, 0f);*/
+                        testVisualEffect.SetFloat("ForwardEmissionSpeed", 1f);
+                        testVisualEffect.SetFloat("SidewardEmissionSpeed", .5f);
                     }
                 }
             }
@@ -190,6 +207,8 @@ public class FogSteering : MonoBehaviour
     static private GameObject CurrentParticleSystem;
     static private UnityEngine.Color CurrentColor1 = new UnityEngine.Color(77f/255f,77f/255f,77f/255f,50f/255f);
     static private UnityEngine.Color CurrentColor2 = new UnityEngine.Color(60f/255f,60f/255f,60f/255f,50f/255f);
+
+    
 
 
     public void SetEmissionColor(UnityEngine.Color color1, UnityEngine.Color color2)

@@ -54,7 +54,7 @@ public class ZeppelinLighting : MonoBehaviour
                 lightComponent.color = color;
                 //lightComponent.color = new Color(115f / 255f, 0, 0);
 
-                FogSteering.SetEmissionColor(new Color(15f / 255f, 0, 0, 100f / 255f), new Color(20f / 255f, 0, 0, 100f / 255f));
+                FogSteering.SetEmissionColor(new Color(15f / 255f, 10f / 255f, 10f / 255f, 100f / 255f), new Color(20f / 255f, 12f / 255f, 12f / 255f, 100f / 255f));
             }
             else if (DangerZone2D.PreviousDangerZone)
             {

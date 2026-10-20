@@ -77,3 +77,5 @@ crashlytics-build.properties
 Korvus/.vscode/settings.json
 Korvus/.vscode/launch.json
 Korvus/.vscode/extensions.json
+Korvus/Assets/XR/Settings/OpenXRPackageSettings.asset
+*.meta

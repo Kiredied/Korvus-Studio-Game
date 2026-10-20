@@ -6,11 +6,6 @@ public class ValveRotation : MonoBehaviour
     void Start()
     {
         HingeJoint hinge = GetComponent<HingeJoint>();
-
-        hinge.useLimits = true;
-        JointLimits limits = hinge.limits;
-        limits.min = 90f;
-        limits.max = 180f;
-        hinge.limits = limits;
+        hinge.useLimits = false;
     }
 }

@@ -2784,7 +2784,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.TCone, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"transform":{"position":{"x":1.080687165260315,"y":3.1903717517852785,"z":1.0},"angles":{"x":0.0,"y":0.0,"z":180.0},"scale":{"x":1.0,"y":1.0,"z":1.0}},"baseRadius":2.2098441123962404,"topRadius":1.2369405031204224,"height":3.9227683544158937}'
+      m_SerializableObject: '{"transform":{"position":{"x":1.080687165260315,"y":3.684054136276245,"z":1.0},"angles":{"x":0.0,"y":0.0,"z":180.0},"scale":{"x":1.0,"y":1.0,"z":1.0}},"baseRadius":2.2098441123962404,"topRadius":1.2369405031204224,"height":4.1390380859375}'
     m_Space: 1
   m_Property:
     name: cone
@@ -3531,7 +3531,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.OrientedBox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":-1.1474573612213135,"y":1.3945252895355225,"z":1.0581821203231812},"angles":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":5.589536190032959,"y":3.7232418060302736,"z":2.6738531589508058}}'
+      m_SerializableObject: '{"center":{"x":-1.1961920261383057,"y":1.423233985900879,"z":1.0348764657974244},"angles":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":5.687005519866943,"y":4.422816276550293,"z":3.4023144245147707}}'
     m_Space: 1
   m_Property:
     name: box
@@ -4007,7 +4007,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.OrientedBox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":-1.0043237209320069,"y":2.431772232055664,"z":0.9399343729019165},"angles":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":5.3032684326171879,"y":1.2372381687164307,"z":3.363337755203247}}'
+      m_SerializableObject: '{"center":{"x":-1.0043237209320069,"y":2.5062332153320314,"z":1.001318097114563},"angles":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":5.3032684326171879,"y":1.3861613273620606,"z":3.9255645275115969}}'
     m_Space: 1
   m_Property:
     name: box

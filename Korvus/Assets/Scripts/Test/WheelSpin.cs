@@ -9,14 +9,15 @@ public class WheelSpin : MonoBehaviour
     [SerializeField] Vector3 localAxis = Vector3.forward;
     [SerializeField] float sensitivity = 1f;
 
-    [Tooltip("Higher = the wheel slows down faster after release")]
     [SerializeField] float friction = 1.5f;
 
-    [Tooltip("0 = very smooth release speed, 1 = raw hand speed")]
     [SerializeField, Range(0f, 1f)] float velocitySmoothing = 0.5f;
+
+    [SerializeField] bool useControllerRotation = false;
 
     IXRSelectInteractor interactor;
     Vector3 localGrabOffset;   // where the grabbed cube sits in the hand's space
+    Vector3 worldGrabOffset;   
     float lastAngle;
     float angularVelocity;     // degrees per second
 
@@ -26,6 +27,10 @@ public class WheelSpin : MonoBehaviour
 
     [SerializeField] float minRotation = -180f;
     [SerializeField] float maxRotation = 720f;
+
+    [SerializeField] float SpinDropoff = -25f;
+
+    static public float RotationToPercentage;
 
     public void ResetRotation()
     {
@@ -55,9 +60,9 @@ public class WheelSpin : MonoBehaviour
         interactor = args.interactorObject;
         Transform hand = interactor.transform;
 
-        // Remember where the cube is relative to the hand, so the hand
-        // carries that point with it, including wrist rotation.
+        // Remember where the cube is relative to the hand, so the hand carries that point with it, including wrist rotation.
         localGrabOffset = hand.InverseTransformPoint(args.interactableObject.transform.position);
+        worldGrabOffset = args.interactableObject.transform.position - interactor.transform.position;
 
         lastAngle = AngleOf(GrabPoint());
         angularVelocity = 0f; // stop any coasting from a previous grab
@@ -66,12 +71,13 @@ public class WheelSpin : MonoBehaviour
     void OnExit(SelectExitEventArgs args)
     {
         if (interactor == args.interactorObject) interactor = null;
-        Debug.Log($"Released. angularVelocity = {angularVelocity}");
+        //Debug.Log($"Released. angularVelocity = {angularVelocity}");
     }
 
     void LateUpdate()
     {
         float dt = Time.deltaTime;
+        RotationToPercentage = Mathf.InverseLerp(minRotation, maxRotation, TotalRotation) * 100;
 
         if (interactor != null)
         {
@@ -85,7 +91,7 @@ public class WheelSpin : MonoBehaviour
 
             transform.Rotate(WorldAxis, delta, Space.World);
             TotalRotation += delta;
-            Debug.Log($"delta={delta:F3}  total={TotalRotation:F3}  inspectorZ={transform.localEulerAngles.z:F3}");
+            //Debug.Log($"delta={delta:F3}  total={TotalRotation:F3}  inspectorZ={transform.localEulerAngles.z:F3}");
         }
         else if (Mathf.Abs(angularVelocity) > 0.05f)
         {
@@ -106,13 +112,15 @@ public class WheelSpin : MonoBehaviour
         }
         else
         {
-            angularVelocity = 0f;
+
+            angularVelocity = SpinDropoff;
         }
     }
 
     Vector3 GrabPoint()
     {
-        return interactor.transform.TransformPoint(localGrabOffset);
+        if (useControllerRotation) return interactor.transform.TransformPoint(localGrabOffset);
+        else return interactor.transform.position + worldGrabOffset;
     }
 
     float AngleOf(Vector3 worldPoint)
@@ -121,8 +129,7 @@ public class WheelSpin : MonoBehaviour
         Vector3 offset = Vector3.ProjectOnPlane(worldPoint - transform.position, axis);
 
         Vector3 reference = Vector3.ProjectOnPlane(Vector3.up, axis);
-        if (reference.sqrMagnitude < 0.001f)
-            reference = Vector3.ProjectOnPlane(Vector3.forward, axis);
+        if (reference.sqrMagnitude < 0.001f) reference = Vector3.ProjectOnPlane(Vector3.forward, axis);
 
         return Vector3.SignedAngle(reference, offset, axis);
     }

@@ -67,8 +67,8 @@ Transform:
   m_GameObject: {fileID: 987449046358306116}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0644}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.37131414}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8006841728047611965}
@@ -1675,8 +1675,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1377207673806200705}
   - {fileID: 2262807141328642773}
@@ -1733,11 +1733,13 @@ MonoBehaviour:
   - {fileID: 1742303083809336681}
   localAxis: {x: 0, y: 0, z: 1}
   sensitivity: 1
-  friction: 8
+  friction: 10
   velocitySmoothing: 0.5
+  useControllerRotation: 0
   TotalRotation: 0
   minRotation: 0
   maxRotation: 720
+  SpinDropoff: -75
 --- !u!1 &7343649577828755944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,6 +1751,7 @@ GameObject:
   - component: {fileID: 2262807141328642773}
   - component: {fileID: 345782789949702021}
   - component: {fileID: 3169780772055451569}
+  - component: {fileID: 379051076733904548}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -1828,3 +1831,25 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &379051076733904548
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7343649577828755944}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}

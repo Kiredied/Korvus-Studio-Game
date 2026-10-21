@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class ZeppelinLighting : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class ZeppelinLighting : MonoBehaviour
     public Light lightComponent;
     [SerializeField, UnityEngine.Range(1f,10f)] private float ColorChangeSpeedSlider = 5f;
     private float ColorChangeSpeed;
+   
 
     void Start()
     {
@@ -33,6 +35,8 @@ public class ZeppelinLighting : MonoBehaviour
                 //lightComponent.color = new Color(25f / 255f, 0, 0);
 
                 FogSteering.SetEmissionColor(new Color(0, 0, 0, 200f / 255f), new Color(0, 0, 0, 200f / 255f));
+                
+                
             }
             else if (DangerZone2D.DeadZone)
             {

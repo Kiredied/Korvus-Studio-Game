@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class DangerZone2D : MonoBehaviour
 {
-    
+    [SerializeField] ZeppelinMapMovement ZeppelinMapMovement;
 
     private int DeathTimer;
     static public bool DeathActivated = false;

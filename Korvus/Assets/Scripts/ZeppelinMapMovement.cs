@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.VFX;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class ZeppelinMapMovement : MonoBehaviour
@@ -7,7 +8,7 @@ public class ZeppelinMapMovement : MonoBehaviour
     public float speed;
     public float turnSpeed;
     static public Quaternion DeathRotation;
-
+    [SerializeField] public VisualEffect testVisualEffect;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -82,7 +83,7 @@ public class ZeppelinMapMovement : MonoBehaviour
     }
 
 
-    static public void Death()
+    public void Death()
     {
         buttontest.buttonforward.GetComponent<XRSimpleInteractable>().enabled = false;
         buttontest.buttonleft.GetComponent<XRSimpleInteractable>().enabled = false;
@@ -91,8 +92,10 @@ public class ZeppelinMapMovement : MonoBehaviour
         buttontest.ButtonForwardEnabled = false;
         buttontest.ButtonLeftEnabled = false;
         buttontest.ButtonRightEnabled = false;
-        
+
         Debug.Log("Player deader than a corpse!!11!!!1!1 ohnoooooo :(((((");
         DangerZone2D.ConsiousnessRemover = true;
+        testVisualEffect.SetBool("Death", true);
+        testVisualEffect.SetFloat("Spawnrate", 0f);
     }
 }

@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DangerZone2D
   ZeppelinMapMovement: {fileID: 5361718946460250798}
+  DarknessGame: {fileID: 2134551647}
 --- !u!65 &12813329
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -608,6 +609,108 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &103587997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 103587998}
+  - component: {fileID: 103588001}
+  - component: {fileID: 103588000}
+  - component: {fileID: 103587999}
+  m_Layer: 0
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &103587998
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103587997}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2042391541}
+  m_Father: {fileID: 2134551648}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &103587999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103587997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &103588000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103587997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &103588001
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103587997}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &121674623
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,6 +759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DangerZone2D
   ZeppelinMapMovement: {fileID: 5361718946460250798}
+  DarknessGame: {fileID: 2134551647}
 --- !u!65 &121674626
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1359,7 +1463,7 @@ Transform:
   - {fileID: 607858264}
   - {fileID: 1320096833}
   - {fileID: 1231023687}
-  - {fileID: 1706977917}
+  - {fileID: 676844613}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &607858263
@@ -1546,6 +1650,68 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 401f107b3bb66b54b800ad2930cb3656, type: 3}
+--- !u!1 &676844610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 676844613}
+  - component: {fileID: 676844612}
+  - component: {fileID: 676844611}
+  m_Layer: 0
+  m_Name: Darkness Modifier (Global Volume)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &676844611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676844610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9afdba89dd0494f97e32f71512794f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &676844612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676844610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 306ad2fcf49f98045a8e2ee88f2e7f79, type: 2}
+--- !u!4 &676844613
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676844610}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 593852112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &737722872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,6 +2275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DangerZone2D
   ZeppelinMapMovement: {fileID: 5361718946460250798}
+  DarknessGame: {fileID: 2134551647}
 --- !u!65 &1024027913
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2266,6 +2433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DangerZone2D
   ZeppelinMapMovement: {fileID: 5361718946460250798}
+  DarknessGame: {fileID: 2134551647}
 --- !u!65 &1066095165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3257,7 +3425,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2218496723442559053, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.433
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2218496723442559053, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3265,7 +3433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2218496723442559053, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.999
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2218496723442559053, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3308,68 +3476,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
---- !u!1 &1706977916
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1706977917}
-  - component: {fileID: 1706977918}
-  - component: {fileID: 1706977919}
-  m_Layer: 0
-  m_Name: Darkness Modifier (Global Volume)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1706977917
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706977916}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 593852112}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1706977918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706977916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
-  m_IsGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: 306ad2fcf49f98045a8e2ee88f2e7f79, type: 2}
---- !u!114 &1706977919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706977916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc9afdba89dd0494f97e32f71512794f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!1 &1735084438
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,6 +4011,81 @@ Transform:
   - {fileID: 6222109406608070494}
   m_Father: {fileID: 5155733648466060737}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2042391540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2042391541}
+  - component: {fileID: 2042391543}
+  - component: {fileID: 2042391542}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2042391541
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042391540}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 103587998}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2042391542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042391540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2042391543
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042391540}
+  m_CullTransparentMesh: 1
 --- !u!1001 &2060062583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4263,6 +4444,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437a0dce6b5e6ea4ea4a13eb873b9376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!1 &2134551647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2134551648}
+  m_Layer: 0
+  m_Name: load
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2134551648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134551647}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0394, y: 0.79735, z: 0.11241}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 103587998}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!2083052967 &2134594634 stripped
 VisualEffect:
   m_CorrespondingSourceObject: {fileID: 916484859241709515, guid: d470432c4658c054db9c58670173bb84, type: 3}
@@ -4666,6 +4879,10 @@ PrefabInstance:
       value: -11.1144
       objectReference: {fileID: 0}
     - target: {fileID: 436304813963349979, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
+      propertyPath: DarknessGame
+      value: 
+      objectReference: {fileID: 2134551647}
+    - target: {fileID: 436304813963349979, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
       propertyPath: ZeppelinMapMovement
       value: 
       objectReference: {fileID: 5361718946460250798}
@@ -4694,9 +4911,17 @@ PrefabInstance:
       value: -11.8736
       objectReference: {fileID: 0}
     - target: {fileID: 1286448253808264632, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
+      propertyPath: DarknessGame
+      value: 
+      objectReference: {fileID: 2134551647}
+    - target: {fileID: 1286448253808264632, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
       propertyPath: ZeppelinMapMovement
       value: 
       objectReference: {fileID: 5361718946460250798}
+    - target: {fileID: 1332147210131405994, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
+      propertyPath: DarknessGame
+      value: 
+      objectReference: {fileID: 2134551647}
     - target: {fileID: 1332147210131405994, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
       propertyPath: ZeppelinMapMovement
       value: 
@@ -4758,6 +4983,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2598495424369413110, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
+      propertyPath: DarknessGame
+      value: 
+      objectReference: {fileID: 2134551647}
+    - target: {fileID: 2598495424369413110, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
       propertyPath: ZeppelinMapMovement
       value: 
       objectReference: {fileID: 5361718946460250798}
@@ -4769,6 +4998,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4234935407602042320, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
+      propertyPath: DarknessGame
+      value: 
+      objectReference: {fileID: 2134551647}
     - target: {fileID: 4234935407602042320, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
       propertyPath: ZeppelinMapMovement
       value: 
@@ -4785,6 +5018,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7881388030061308278, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
+      propertyPath: DarknessGame
+      value: 
+      objectReference: {fileID: 2134551647}
     - target: {fileID: 7881388030061308278, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
       propertyPath: ZeppelinMapMovement
       value: 
@@ -4806,9 +5043,17 @@ PrefabInstance:
       value: -76.9585
       objectReference: {fileID: 0}
     - target: {fileID: 8721565185414076729, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
+      propertyPath: DarknessGame
+      value: 
+      objectReference: {fileID: 2134551647}
+    - target: {fileID: 8721565185414076729, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
       propertyPath: ZeppelinMapMovement
       value: 
       objectReference: {fileID: 5361718946460250798}
+    - target: {fileID: 9080577473460230652, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
+      propertyPath: DarknessGame
+      value: 
+      objectReference: {fileID: 2134551647}
     - target: {fileID: 9080577473460230652, guid: 42314645c5ff85945b7f141e0b49183d, type: 3}
       propertyPath: ZeppelinMapMovement
       value: 
@@ -5233,6 +5478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DangerZone2D
   ZeppelinMapMovement: {fileID: 5361718946460250798}
+  DarknessGame: {fileID: 2134551647}
 --- !u!1 &8906559742026287523
 GameObject:
   m_ObjectHideFlags: 0
@@ -5366,6 +5612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DangerZone2D
   ZeppelinMapMovement: {fileID: 5361718946460250798}
+  DarknessGame: {fileID: 2134551647}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5378,3 +5625,4 @@ SceneRoots:
   - {fileID: 2075496638}
   - {fileID: 3675587397915368498}
   - {fileID: 53652924}
+  - {fileID: 2134551648}

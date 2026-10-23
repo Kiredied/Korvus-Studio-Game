@@ -1,14 +1,22 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class DangerZone2D : MonoBehaviour
 {
+    Image Image;
     [SerializeField] ZeppelinMapMovement ZeppelinMapMovement;
+
+    [SerializeField] GameObject DarknessGame;
+    bool revertlog = false;
+
 
     private int DeathTimer;
     static public bool DeathActivated = false;
     static public bool ConsiousnessRemover = false;
+    public static bool DarknessRemover = false;
 
     private bool visible = false;
     static public bool CanDoResearch = false;
@@ -20,6 +28,7 @@ public class DangerZone2D : MonoBehaviour
     void Start()
     {
         DeathTimer = 0;
+        Image = DarknessGame.GetComponentInChildren<Image>();
     }
 
     // Update is called once per frame
@@ -37,6 +46,18 @@ public class DangerZone2D : MonoBehaviour
                 /*DeathFlickering.StartMinimapFlicker();
                 DeathFlickering.StartMapFlicker();
                 DeathFlickering.StartLightsFlicker();*/
+            }
+        }
+
+        if (DarknessRemover)
+        {
+            if (!revertlog) Debug.Log("Restoring consciousness. (Post-Processing)");{ revertlog = true; }
+            if (DarknessGame != null)
+            {
+                if (Image != null)
+                {
+                    Image.color = new Color(0, 0, 0, ((Image.color.a * 255f) * 30 + 0f) / 31f / 255f);
+                }
             }
         }
     }

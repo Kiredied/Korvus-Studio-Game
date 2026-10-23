@@ -17,7 +17,7 @@ public class ZeppelinMapMovement : MonoBehaviour
         buttontest.ButtonForwardEnabled = false;
         buttontest.ButtonLeftEnabled = false;
         buttontest.ButtonRightEnabled = false;
-
+        DangerZone2D.DarknessRemover = true;
     }
 
 

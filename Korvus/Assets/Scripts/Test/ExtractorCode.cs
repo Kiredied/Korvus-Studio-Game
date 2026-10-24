@@ -35,6 +35,9 @@ public class ExtractorCode : MonoBehaviour
     {
         WheelRotation = WheelSpin.RotationToPercentage;
         
+        
+        /*
+        //Debug
         if (timing >= 50)
         {
             Debug.Log("InputBar2D scalex: " + (WheelRotation / tempMax));
@@ -42,8 +45,9 @@ public class ExtractorCode : MonoBehaviour
             timing = 0;
         }
         else timing += 1;
+        */
 
-            InputBar2D.transform.localScale = new Vector3((WheelRotation / tempMax), InputBar2DScale.y, InputBar2DScale.z);
+        InputBar2D.transform.localScale = new Vector3((WheelRotation / tempMax), InputBar2DScale.y, InputBar2DScale.z);
         InputBar2D.transform.localPosition = new Vector3((WheelRotation - 1) / (tempMax * 2f), InputBar2DLocation.y, InputBar2DLocation.z);
 
         TempProgressBar2D.transform.localScale = new Vector3((TempProgressBar2DShown / tempMaxprogress), TempProgressBar2DScale.y, TempProgressBar2DScale.z);

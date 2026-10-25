@@ -11,6 +11,7 @@ TagManager:
   - PreviousDangerZone
   - DangerWalls
   - DeathWalls
+  - Canister
   layers:
   - Default
   - TransparentFX

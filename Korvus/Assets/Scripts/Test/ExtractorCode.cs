@@ -37,6 +37,7 @@ public class ExtractorCode : MonoBehaviour
     
     // UI Values
     [SerializeField] float TempProgressBar2DValue = 0f;
+	static public bool resetTempProgressBar2DValue = false;
     [SerializeField] float MaxTempProgressBar2DValue = 500f;
     
     // Canister values
@@ -84,12 +85,17 @@ public class ExtractorCode : MonoBehaviour
         RealProgressBar3D2Shown = 0f;
         RealProgressBar3D3Value = 0f;
         RealProgressBar3D3Shown = 0f;
+
+		RealProgressBar3D1Done = false;
+		RealProgressBar3D2Done = false;
+		RealProgressBar3D3Done = false;
     }
 
 
     void FixedUpdate()
     {
         WheelRotation = WheelSpin.RotationToPercentage;
+		if (resetTempProgressBar2DValue) {TempProgressBar2DValue =0; resetTempProgressBar2DValue = false;}
         
         
         /*
@@ -124,20 +130,31 @@ public class ExtractorCode : MonoBehaviour
         
         if (WheelRotation >= 90)
         {
-            TempProgressBar2DValue += 1f;
-            // if (canister1insocket) {
+            InputBar2D.GetComponent<SpriteRenderer>().color = Color.yellow;
+            if (ExtractorSocket.canister1insocket) {
             RealProgressBar3D1Value += 1f;
-            // } else if (canister2insocket) {
+			TempProgressBar2DValue += 1f;
+            } else if (ExtractorSocket.canister2insocket) {
             RealProgressBar3D2Value += 1f;
-            // } else if (canister3insocket) {
+			TempProgressBar2DValue += 1f;
+            } else if (ExtractorSocket.canister3insocket) {
             RealProgressBar3D3Value += 1f;
-            // }
-        }
+			TempProgressBar2DValue += 1f;
+            }
+        } else {InputBar2D.GetComponent<SpriteRenderer>().color = Color.white;}
 
         
-        TempProgressBar2DShown = Mathf.InverseLerp(0f, MaxTempProgressBar2DValue, TempProgressBar2DValue) * 100;
-        RealProgressBar3D1Shown = Mathf.InverseLerp(0f, MaxRealProgressBar3DValue, RealProgressBar3D1Value) * 100;
-        RealProgressBar3D2Shown = Mathf.InverseLerp(0f, MaxRealProgressBar3DValue, RealProgressBar3D2Value) * 100;
-        RealProgressBar3D3Shown = Mathf.InverseLerp(0f, MaxRealProgressBar3DValue, RealProgressBar3D3Value) * 100;
+        TempProgressBar2DShown = Mathf.InverseLerp(0f, MaxTempProgressBar2DValue, TempProgressBar2DValue) * 100f;
+        RealProgressBar3D1Shown = Mathf.InverseLerp(0f, MaxRealProgressBar3DValue, RealProgressBar3D1Value) * 100f;
+        RealProgressBar3D2Shown = Mathf.InverseLerp(0f, MaxRealProgressBar3DValue, RealProgressBar3D2Value) * 100f;
+        RealProgressBar3D3Shown = Mathf.InverseLerp(0f, MaxRealProgressBar3DValue, RealProgressBar3D3Value) * 100f;
+		
+		if (RealProgressBar3D1Shown >= 99f){RealProgressBar3D1.transform.parent.parent.parent.GetComponentInChildren<Collider>().enabled = true; RealProgressBar3D1Done = true;}
+		if (RealProgressBar3D2Shown >= 99f){RealProgressBar3D2.transform.parent.parent.parent.GetComponentInChildren<Collider>().enabled = true; RealProgressBar3D2Done = true;}
+		if (RealProgressBar3D3Shown >= 99f){RealProgressBar3D3.transform.parent.parent.parent.GetComponentInChildren<Collider>().enabled = true; RealProgressBar3D3Done = true;}
     }
+
+	static public bool RealProgressBar3D1Done;
+	static public bool RealProgressBar3D2Done;
+	static public bool RealProgressBar3D3Done;
 }

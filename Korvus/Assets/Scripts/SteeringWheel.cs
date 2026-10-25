@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -78,4 +79,6 @@ public class SteeringWheel : UnityEngine.XR.Interaction.Toolkit.Interactables.XR
         // Use a smaller rotation sensitivity with two hands
         return 1.0f / interactorsSelecting.Count;
     }
+
+    
 }

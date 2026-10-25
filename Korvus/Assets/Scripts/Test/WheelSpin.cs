@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
@@ -74,6 +75,43 @@ public class WheelSpin : MonoBehaviour
         //Debug.Log($"Released. angularVelocity = {angularVelocity}");
     }
 
+    private float minRot;
+    private float maxRot;
+    private float time = 0f;
+
+    void Awake()
+    {
+        minRot = minRotation;
+        maxRot = maxRotation;
+    }
+
+    void FixedUpdate()
+    {
+        if (!DangerZone2D.CanDoResearch || !ExtractorSocket.anycanisterinsocket)
+        {
+            if (time <= 50f)
+            {
+                time += 1f;
+                
+            } else
+            {
+                maxRotation = 0;
+                this.transform.rotation = Quaternion.Euler(0,0,0);
+                time = 0f;
+            }
+            
+            minRotation = 0;
+            angularVelocity = -1000f;
+            
+        }
+        else
+        {
+            time = 0f;
+            minRotation = minRot;
+            maxRotation = maxRot;
+        }
+        
+    }
     void LateUpdate()
     {
         float dt = Time.deltaTime;
@@ -139,4 +177,6 @@ public class WheelSpin : MonoBehaviour
         float target = Mathf.Clamp(TotalRotation + step, minRotation, maxRotation);
         return target - TotalRotation;
     }
+    
+    
 }

@@ -22,7 +22,7 @@ TagManager:
   - Hands
   - Interactive
   - 
-  - 
+  - MainCameraExclusion
   - Camera2DExclusive
   - MiniCamera2DExclusive
   - FogCollision

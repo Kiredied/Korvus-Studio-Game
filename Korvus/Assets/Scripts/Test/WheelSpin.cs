@@ -26,10 +26,10 @@ public class WheelSpin : MonoBehaviour
 
     [SerializeField] public float TotalRotation;
 
-    [SerializeField] float minRotation = -180f;
-    [SerializeField] float maxRotation = 720f;
+    [SerializeField] float minRotation = 0f;
+    [SerializeField] float maxRotation = 7200f;
 
-    [SerializeField] float SpinDropoff = -25f;
+    [SerializeField] float SpinDropoff = -1000f;
 
     static public float RotationToPercentage;
 

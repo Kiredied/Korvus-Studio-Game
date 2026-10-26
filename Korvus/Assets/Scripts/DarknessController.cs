@@ -39,14 +39,5 @@ public class DarknessController : MonoBehaviour
             colorAdjustments.postExposure.value = ((colorAdjustments.postExposure.value * (101 - DarknessSpeed) + darknessLevel) / (102 - DarknessSpeed));
         }
 
-        if (MainmenuCode.TurnDarkBool)
-        {
-            
-        }
-
-        if (DangerZone2D.DarknessRemover)
-        {
-            
-        }
     }
 }

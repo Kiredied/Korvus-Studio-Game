@@ -5980,6 +5980,10 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 7415
       objectReference: {fileID: 0}
+    - target: {fileID: 1755426661733781391, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+      propertyPath: m_CastDistance
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2218496723442559053, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.5
@@ -6024,9 +6028,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Origin Hands (XR Rig)
       objectReference: {fileID: 0}
+    - target: {fileID: 2572820093246560282, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+      propertyPath: m_CastDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802244060605695621, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+      propertyPath: m_CastDistance
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7923366306236096861, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8856519734889302113, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+      propertyPath: m_CastDistance
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7342,7 +7358,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1157809296866290492, guid: 4f4ed02b1157a45459fe8ce2360de4b9, type: 3}
       propertyPath: SpinDropoff
-      value: -100
+      value: -1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1157809296866290492, guid: 4f4ed02b1157a45459fe8ce2360de4b9, type: 3}
+      propertyPath: maxRotation
+      value: 7200
       objectReference: {fileID: 0}
     - target: {fileID: 5900166956239892684, guid: 4f4ed02b1157a45459fe8ce2360de4b9, type: 3}
       propertyPath: m_Name

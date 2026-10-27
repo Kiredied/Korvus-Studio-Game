@@ -7,8 +7,8 @@ public class DarknessController : MonoBehaviour
 {
 
     private bool log = false;
-    private bool mainmenulog = false;
-    private bool revertlog = false;
+    //private bool mainmenulog = false;
+    //private bool revertlog = false;
 
     //[SerializeField] GameObject DarknessMainMenu;
     //[SerializeField] GameObject DarknessGame;

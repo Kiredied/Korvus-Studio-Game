@@ -1051,7 +1051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
   musicLibrary: {fileID: 561057021}
-  musicSource: {fileID: 0}
+  musicSource: {fileID: 1205181708}
 --- !u!114 &561057021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,10 +1065,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicLibrary
   musicTracks:
-  - trackName: MainManu
-    audioClip: {fileID: 0}
+  - trackName: MainMenu
+    audioClip: {fileID: 8300000, guid: 3b7124c87f7eb4302af91864beb8a637, type: 3}
   - trackName: Game
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 367d8c52ee1e5f4418f42261d090c04b, type: 3}
   - trackName: 
     audioClip: {fileID: 0}
 --- !u!1 &628092351

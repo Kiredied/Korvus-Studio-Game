@@ -214,7 +214,7 @@ MonoBehaviour:
     x: -1954
     y: -494
     width: 3110
-    height: 3182
+    height: 3165
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,7 +280,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 200000
+      m_SerializableObject: 1000
     min: -Infinity
     max: Infinity
     enumValues: []
@@ -539,7 +539,7 @@ MonoBehaviour:
   - {fileID: 114780028408030698}
   - {fileID: 114063133802684794}
   dataType: 0
-  capacity: 1000000
+  capacity: 10000
   stripCapacity: 16
   particlePerStripCount: 16
   needsComputeBounds: 0
@@ -1228,7 +1228,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 200000
+      m_SerializableObject: 1000
     m_Space: -1
   m_Property:
     name: o
@@ -1414,7 +1414,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.OrientedBox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.0,"y":-0.14577698707580567,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":5.0,"y":2.3101553916931154,"z":5.0}}'
+      m_SerializableObject: '{"center":{"x":0.0,"y":-0.08376842737197876,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":5.0,"y":3.07405424118042,"z":5.0}}'
     m_Space: 0
   m_Property:
     name: Box
@@ -2784,7 +2784,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.TCone, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"transform":{"position":{"x":1.080687165260315,"y":3.684054136276245,"z":1.0},"angles":{"x":0.0,"y":0.0,"z":180.0},"scale":{"x":1.0,"y":1.0,"z":1.0}},"baseRadius":2.2098441123962404,"topRadius":1.2369405031204224,"height":4.1390380859375}'
+      m_SerializableObject: '{"transform":{"position":{"x":1.8032639026641846,"y":4.180666923522949,"z":1.0},"angles":{"x":0.0,"y":0.0,"z":180.0},"scale":{"x":1.0,"y":1.0,"z":1.0}},"baseRadius":2.771068811416626,"topRadius":1.8643475770950318,"height":5.158320903778076}'
     m_Space: 1
   m_Property:
     name: cone
@@ -3531,7 +3531,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.OrientedBox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":-1.1961920261383057,"y":1.423233985900879,"z":1.0348764657974244},"angles":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":5.687005519866943,"y":4.422816276550293,"z":3.4023144245147707}}'
+      m_SerializableObject: '{"center":{"x":-0.9638075828552246,"y":1.423233985900879,"z":1.1338229179382325},"angles":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":6.783394813537598,"y":4.422816276550293,"z":4.327300071716309}}'
     m_Space: 1
   m_Property:
     name: box
@@ -4007,7 +4007,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.OrientedBox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":-1.0043237209320069,"y":2.5062332153320314,"z":1.001318097114563},"angles":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":5.3032684326171879,"y":1.3861613273620606,"z":3.9255645275115969}}'
+      m_SerializableObject: '{"center":{"x":-0.6160988807678223,"y":2.6460156440734865,"z":1.0101696252822877},"angles":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":6.079717636108398,"y":1.6657249927520753,"z":4.848402976989746}}'
     m_Space: 1
   m_Property:
     name: box

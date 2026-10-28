@@ -10096,6 +10096,10 @@ PrefabInstance:
       value: 0.010185514
       objectReference: {fileID: 0}
     - target: {fileID: 1275933236059106270, guid: a402048d719238946ae2053eff74b93a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275933236059106270, guid: a402048d719238946ae2053eff74b93a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -10119,6 +10123,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 80f55ef90d84a2f438537e5b6298f5e7, type: 2}
+    - target: {fileID: 1605187560639810643, guid: a402048d719238946ae2053eff74b93a, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2016803081655884159, guid: a402048d719238946ae2053eff74b93a, type: 3}
       propertyPath: FogSteering
       value: 
@@ -10162,6 +10170,10 @@ PrefabInstance:
     - target: {fileID: 4506443935493055298, guid: a402048d719238946ae2053eff74b93a, type: 3}
       propertyPath: m_Materials.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518021268377441396, guid: a402048d719238946ae2053eff74b93a, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4674114859161822205, guid: a402048d719238946ae2053eff74b93a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10215,9 +10227,21 @@ PrefabInstance:
       propertyPath: testVisualEffect
       value: 
       objectReference: {fileID: 2134594634}
+    - target: {fileID: 6381535226674532956, guid: a402048d719238946ae2053eff74b93a, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6622417303139443261, guid: a402048d719238946ae2053eff74b93a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635014339434890672, guid: a402048d719238946ae2053eff74b93a, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6880382483137230289, guid: a402048d719238946ae2053eff74b93a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6880382483137230289, guid: a402048d719238946ae2053eff74b93a, type: 3}
       propertyPath: m_StaticEditorFlags

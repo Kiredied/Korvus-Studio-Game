@@ -4,6 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public void Start()
+    {
+        // Start the music when the main menu is loaded
+        MusicManager.Instance.PlayMusic("MainMenu");
+    }
     
     private bool scenechanged = false;
     // Play button is pressed, the game scene will load
@@ -12,6 +17,7 @@ public class MainMenu : MonoBehaviour
         MainmenuCode.TurnDarkBool = true;
         StartCoroutine(SpawnLoop());
     }
+    
 
     // After the Quit button is pressed, the application will close
     public void Quit()
@@ -33,6 +39,7 @@ public class MainMenu : MonoBehaviour
         {
             scenechanged = true;
             SceneManager.LoadScene("Game");
+            MusicManager.Instance.PlayMusic("Game");
         }
     }
 }

@@ -20,7 +20,11 @@ public class MusicManager : MonoBehaviour
         }
     }
     //take a clip and adds a .05 second fade in and fade out to it
-            IEnumerator AnimateMusicCrossFade(AudioClip nextTrack, float fadeDuration = 0.5f)
+    public void PlayMusic(string trackName, float fadeDuration = 0.5f)
+    {
+        StartCoroutine(AnimateMusicCrossfade(musicLibrary.GetClipFromName(trackName), fadeDuration));
+    }
+            IEnumerator AnimateMusicCrossfade(AudioClip nextTrack, float fadeDuration = 0.5f)
     {
         float percent = 0;
         while (percent <1)

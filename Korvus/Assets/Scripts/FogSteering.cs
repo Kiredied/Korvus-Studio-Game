@@ -20,6 +20,8 @@ public class FogSteering : MonoBehaviour
 
     [SerializeField] private VisualEffect testVisualEffect;
 
+    [SerializeField] private FogGlassSteering fogGlass;
+
     private float defaultEmissionRateForwardSlow;
     private float defaultEmissionRateForward;
     private float defaultEmissionRateLeft;
@@ -94,8 +96,9 @@ public class FogSteering : MonoBehaviour
                 SetEmissionRate(fogLeftSlow, 0f);
                 SetEmissionRate(fogRight, 0f);
                 SetEmissionRate(fogRightSlow, 0f);*/
-                testVisualEffect.SetFloat("ForwardEmissionSpeed", .5f);
-                testVisualEffect.SetFloat("SidewardEmissionSpeed", 0f);
+                //testVisualEffect.SetFloat("ForwardEmissionSpeed", .5f);
+                //testVisualEffect.SetFloat("SidewardEmissionSpeed", 0f);
+                SetSteering(.5f, .0f);
             }
             else if (isFast)
             {
@@ -105,8 +108,9 @@ public class FogSteering : MonoBehaviour
                 SetEmissionRate(fogLeftSlow, 0f);
                 SetEmissionRate(fogRight, 0f);
                 SetEmissionRate(fogRightSlow, 0f);*/
-                testVisualEffect.SetFloat("ForwardEmissionSpeed", 1f);
-                testVisualEffect.SetFloat("SidewardEmissionSpeed", 0f);
+                //testVisualEffect.SetFloat("ForwardEmissionSpeed", 1f);
+                //testVisualEffect.SetFloat("SidewardEmissionSpeed", 0f);
+                SetSteering(1f, 0f);
             }
         }
         else
@@ -122,8 +126,9 @@ public class FogSteering : MonoBehaviour
                     SetEmissionRate(fogLeftSlow, 0f);
                     SetEmissionRate(fogRight, 0f);
                     SetEmissionRate(fogRightSlow, 0f);*/
-                    testVisualEffect.SetFloat("ForwardEmissionSpeed", .5f);
-                    testVisualEffect.SetFloat("SidewardEmissionSpeed", 0f);
+                    //testVisualEffect.SetFloat("ForwardEmissionSpeed", .5f);
+                    //testVisualEffect.SetFloat("SidewardEmissionSpeed", 0f);
+                    SetSteering(.5f, 0f);
                 }
                 else if (isFast)
                 {
@@ -133,8 +138,9 @@ public class FogSteering : MonoBehaviour
                     SetEmissionRate(fogLeftSlow, 0f);
                     SetEmissionRate(fogRight, 0f);
                     SetEmissionRate(fogRightSlow, 0f);*/
-                    testVisualEffect.SetFloat("ForwardEmissionSpeed", 1f);
-                    testVisualEffect.SetFloat("SidewardEmissionSpeed", 0f);
+                    //testVisualEffect.SetFloat("ForwardEmissionSpeed", 1f);
+                    //testVisualEffect.SetFloat("SidewardEmissionSpeed", 0f);
+                    SetSteering(1f, 0f);
                 }
             }
             else
@@ -150,8 +156,9 @@ public class FogSteering : MonoBehaviour
                         SetEmissionRate(fogLeftSlow, defaultEmissionRateLeftSlow);
                         SetEmissionRate(fogRight, 0f);
                         SetEmissionRate(fogRightSlow, 0f);*/
-                        testVisualEffect.SetFloat("ForwardEmissionSpeed", .5f);
-                        testVisualEffect.SetFloat("SidewardEmissionSpeed", -.5f);
+                        //testVisualEffect.SetFloat("ForwardEmissionSpeed", .5f);
+                        //testVisualEffect.SetFloat("SidewardEmissionSpeed", -.5f);
+                        SetSteering(.5f, -.5f);
                     }
                     else if (isFast)
                     {
@@ -161,8 +168,9 @@ public class FogSteering : MonoBehaviour
                         SetEmissionRate(fogLeftSlow, 0f);
                         SetEmissionRate(fogRight, 0f);
                         SetEmissionRate(fogRightSlow, 0f);*/
-                        testVisualEffect.SetFloat("ForwardEmissionSpeed", 1f);
-                        testVisualEffect.SetFloat("SidewardEmissionSpeed", -.5f);
+                        //testVisualEffect.SetFloat("ForwardEmissionSpeed", 1f);
+                        //testVisualEffect.SetFloat("SidewardEmissionSpeed", -.5f);
+                        SetSteering(1f, -.5f);
                     }
                 }
                 if (buttontest.ButtonRightEnabled)
@@ -176,8 +184,9 @@ public class FogSteering : MonoBehaviour
                         SetEmissionRate(fogLeftSlow, 0f);
                         SetEmissionRate(fogRight, 0f);
                         SetEmissionRate(fogRightSlow, defaultEmissionRateRightSlow);*/
-                        testVisualEffect.SetFloat("ForwardEmissionSpeed", .5f);
-                        testVisualEffect.SetFloat("SidewardEmissionSpeed", .5f);
+                        //testVisualEffect.SetFloat("ForwardEmissionSpeed", .5f);
+                        //testVisualEffect.SetFloat("SidewardEmissionSpeed", .5f);
+                        SetSteering(.5f, .5f);
                     }
                     else if (isFast)
                     {
@@ -187,14 +196,15 @@ public class FogSteering : MonoBehaviour
                         SetEmissionRate(fogLeftSlow, 0f);
                         SetEmissionRate(fogRight, defaultEmissionRateRight);
                         SetEmissionRate(fogRightSlow, 0f);*/
-                        testVisualEffect.SetFloat("ForwardEmissionSpeed", 1f);
-                        testVisualEffect.SetFloat("SidewardEmissionSpeed", .5f);
+                        //testVisualEffect.SetFloat("ForwardEmissionSpeed", 1f);
+                        //testVisualEffect.SetFloat("SidewardEmissionSpeed", .5f);
+                        SetSteering(1f,.5f);
                     }
                 }
             }
         }
     }
-
+   
     private void SetEmissionRate(ParticleSystem particleSystem, float rate)
     {
         var emission = particleSystem.emission;
@@ -230,4 +240,12 @@ public class FogSteering : MonoBehaviour
         CurrentColor1 = color1;
         CurrentColor2 = color2;
     }
+
+    private void SetSteering(float forward, float sideward)
+    {
+        testVisualEffect.SetFloat("ForwardEmissionSpeed", forward);
+        testVisualEffect.SetFloat("SidewardEmissionSpeed", sideward);
+        if (fogGlass != null) fogGlass.SetFlow(forward, sideward);
+    }
+
 }

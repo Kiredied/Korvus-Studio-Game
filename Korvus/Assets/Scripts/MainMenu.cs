@@ -4,6 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public void Start()
+    {
+       //plays main menu music when the scene is loaded
+        MusicManager.Instance.PlayMusic("MainMenu");
+    }
     
     private bool scenechanged = false;
     // Play button is pressed, the game scene will load
@@ -33,6 +38,7 @@ public class MainMenu : MonoBehaviour
         {
             scenechanged = true;
             SceneManager.LoadScene("Game");
+            MusicManager.Instance.PlayMusic("Game");
         }
     }
 }

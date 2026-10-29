@@ -66,7 +66,12 @@ public class MainMenu : MonoBehaviour
     }
     public void LoadVolume()
     {
+        // errors out so i commented it -Diederik
+        /*
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        */
+        
+        
     }
 }

@@ -6,10 +6,12 @@ using UnityEngine.UI;
 
 public class DangerZone2D : MonoBehaviour
 {
-    Image Image;
+    Color darknessColor;
     [SerializeField] ZeppelinMapMovement ZeppelinMapMovement;
 
     [SerializeField] GameObject DarknessGame;
+    [SerializeField] Material DarknessMaterialTransparent;
+    [SerializeField] Material DarknessMaterialOpaque;
     bool revertlog = false;
 
 
@@ -28,8 +30,11 @@ public class DangerZone2D : MonoBehaviour
     void Start()
     {
         DeathTimer = 0;
-        Image = DarknessGame.GetComponentInChildren<Image>();
+        darknessColor = new Color(0, 0, 0, 1);
+        DarknessGame.GetComponent<MeshRenderer>().material = DarknessMaterialOpaque;
+        DarknessGame.GetComponent<MeshRenderer>().material.color = darknessColor;
     }
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -54,10 +59,9 @@ public class DangerZone2D : MonoBehaviour
             if (!revertlog) Debug.Log("Restoring consciousness. (Post-Processing)");{ revertlog = true; }
             if (DarknessGame != null)
             {
-                if (Image != null)
-                {
-                    Image.color = new Color(0, 0, 0, ((Image.color.a * 255f) * 30 + 0f) / 31f / 255f);
-                }
+                DarknessGame.GetComponent<MeshRenderer>().material = DarknessMaterialTransparent;
+                darknessColor = new Color(0, 0, 0, ((darknessColor.a * 255f) * 30 + 0f) / 31f / 255f);
+                DarknessGame.GetComponent<MeshRenderer>().material.color = darknessColor;
             }
         }
     }

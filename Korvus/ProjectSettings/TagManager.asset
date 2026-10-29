@@ -26,7 +26,7 @@ TagManager:
   - Camera2DExclusive
   - MiniCamera2DExclusive
   - FogCollision
-  - 
+  - IgnoreControllerRaycast
   - 
   - 
   - 

@@ -142,7 +142,13 @@ public class ExtractorSocket : MonoBehaviour
                 canister1insocket = true;
                 if (!ExtractorCode.RealProgressBar3D1Done || canister1insocketcheck)
                 {
-                    obj.GetComponentInChildren<Collider>().enabled = false;
+                    Collider[] colliders = obj.GetComponentsInChildren<Collider>();
+
+                    foreach (Collider col in colliders)
+                    {
+                        col.enabled = false;
+                    }
+
                 }
             }
             else if (obj.name == "CanisterObject2")
@@ -151,7 +157,12 @@ public class ExtractorSocket : MonoBehaviour
                 canister2insocket = true;
                 if (!ExtractorCode.RealProgressBar3D2Done || canister2insocketcheck)
                 {
-                    obj.GetComponentInChildren<Collider>().enabled = false;
+                    Collider[] colliders = obj.GetComponentsInChildren<Collider>();
+
+                    foreach (Collider col in colliders)
+                    {
+                        col.enabled = false;
+                    }
                 }
             }
             else if (obj.name == "CanisterObject3")
@@ -160,7 +171,12 @@ public class ExtractorSocket : MonoBehaviour
                 canister3insocket = true;
                 if (!ExtractorCode.RealProgressBar3D3Done || canister3insocketcheck)
                 {
-                    obj.GetComponentInChildren<Collider>().enabled = false;
+                    Collider[] colliders = obj.GetComponentsInChildren<Collider>();
+
+                    foreach (Collider col in colliders)
+                    {
+                        col.enabled = false;
+                    }
                 }
             }
             else 

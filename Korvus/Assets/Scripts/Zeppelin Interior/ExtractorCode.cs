@@ -149,9 +149,39 @@ public class ExtractorCode : MonoBehaviour
         RealProgressBar3D2Shown = Mathf.InverseLerp(0f, MaxRealProgressBar3DValue, RealProgressBar3D2Value) * 100f;
         RealProgressBar3D3Shown = Mathf.InverseLerp(0f, MaxRealProgressBar3DValue, RealProgressBar3D3Value) * 100f;
 		
-		if (RealProgressBar3D1Shown >= 99f){RealProgressBar3D1.transform.parent.parent.parent.GetComponentInChildren<Collider>().enabled = true; RealProgressBar3D1Done = true;}
-		if (RealProgressBar3D2Shown >= 99f){RealProgressBar3D2.transform.parent.parent.parent.GetComponentInChildren<Collider>().enabled = true; RealProgressBar3D2Done = true;}
-		if (RealProgressBar3D3Shown >= 99f){RealProgressBar3D3.transform.parent.parent.parent.GetComponentInChildren<Collider>().enabled = true; RealProgressBar3D3Done = true;}
+		if (RealProgressBar3D1Shown >= 99f)
+        {
+            Collider[] colliders = RealProgressBar3D1.transform.parent.parent.parent.GetComponentsInChildren<Collider>();
+
+            foreach (Collider col in colliders)
+            {
+                col.enabled = true;
+            }
+
+            RealProgressBar3D1Done = true;
+        }
+		if (RealProgressBar3D2Shown >= 99f)
+        {
+            Collider[] colliders = RealProgressBar3D2.transform.parent.parent.parent.GetComponentsInChildren<Collider>();
+
+            foreach (Collider col in colliders)
+            {
+                col.enabled = true;
+            }
+
+            RealProgressBar3D2Done = true;
+        }
+		if (RealProgressBar3D3Shown >= 99f)
+        {
+            Collider[] colliders = RealProgressBar3D3.transform.parent.parent.parent.GetComponentsInChildren<Collider>();
+
+            foreach (Collider col in colliders)
+            {
+                col.enabled = true;
+            }
+
+            RealProgressBar3D3Done = true;
+        }
     }
 
 	static public bool RealProgressBar3D1Done;

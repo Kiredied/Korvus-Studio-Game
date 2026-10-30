@@ -1,47 +1,137 @@
-using System.Threading;
-using Unity.Mathematics;
+using System.Collections.Generic;
 using UnityEngine;
+
+using UnityRandom = UnityEngine.Random;
 
 public class ZeppelinDamage : MonoBehaviour
 {
-    private float Timer;
-    static public float MinDamageTimer = 10;
-    static public float MaxDamageTimer = 15;
+    static public float minDamageInterval = 20f;
+    static public float maxDamageInterval = 60f;
+    [SerializeField] private GameObject damageLocationParent;
 
-    [SerializeField] GameObject DamageLocationParent;
+    public static int DamageCount { get; private set; }
+    public static float DamagePercentage { get; private set; }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private float damageTimer;
+    private float nextDamageTime;
+
+    private void Start()
     {
-        Timer = 0;
-        
+        if (maxDamageInterval < minDamageInterval)
+        {
+            maxDamageInterval = minDamageInterval;
+        }
+
+        DamageCount = 0;
+        DamagePercentage = 0f;
+        damageTimer = 0f;
+        nextDamageTime = GetNextDamageTime();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        Timer += 1;
-        if (Timer > MinDamageTimer || Timer < MaxDamageTimer)
+        if (damageLocationParent == null)
         {
-            if (UnityEngine.Random.Range(0, 10) == 5)
+            return;
+        }
+
+        damageTimer += Time.fixedDeltaTime;
+
+        if (damageTimer < nextDamageTime)
+        {
+            return;
+        }
+
+        damageTimer = 0f;
+        nextDamageTime = GetNextDamageTime();
+        DoDamage();
+    }
+
+    private float GetNextDamageTime()
+    {
+        return UnityRandom.Range(minDamageInterval, maxDamageInterval);
+    }
+
+    private void DoDamage()
+    {
+        IndividualDamage[] damageLocations =
+            damageLocationParent.GetComponentsInChildren<IndividualDamage>(true);
+
+        var availableLocations = new List<IndividualDamage>();
+
+        foreach (IndividualDamage damageLocation in damageLocations)
+        {
+            if (!damageLocation.objectdamaged)
             {
-                Timer = 0;
-                // DoDamage();
+                availableLocations.Add(damageLocation);
             }
         }
-        else if (Timer > MaxDamageTimer)
+
+        if (availableLocations.Count == 0)
         {
-            Timer = 0;
-            DoDamage();
+            Debug.Log("No available damage locations.");
+            return;
+        }
+
+        int index = UnityRandom.Range(0, availableLocations.Count);
+        IndividualDamage selectedLocation = availableLocations[index];
+
+        // Get the DamageLocationX parent
+        GameObject damageRoot = selectedLocation.transform.parent.gameObject;
+
+        // Ensure the parent gameobject is active
+        damageRoot.SetActive(true);
+
+        // Find particle system as a child of DamageLocationX
+        ParticleSystem ps = damageRoot.GetComponentInChildren<ParticleSystem>(true);
+
+        if (ps != null)
+        {
+            ps.gameObject.SetActive(true);
+            Debug.Log("Particle system " + ps.gameObject.name + " activated under " + damageRoot.name);
+        }
+        else
+        {
+            Debug.LogWarning("No particle system found under " + damageRoot.name);
+        }
+
+        // Enable colliders for the repair zone
+        Collider[] colliders = damageRoot.GetComponentsInChildren<Collider>(true);
+        foreach (Collider col in colliders)
+        {
+            col.enabled = true;
+        }
+
+        selectedLocation.objectdamaged = true;
+
+        UpdateDamageStatistics(damageLocations);
+
+        Debug.Log("Activated damage location: " + damageRoot.name);
+    }
+
+    public static void RegisterRepair(IndividualDamage repairedLocation)
+    {
+        if (repairedLocation != null)
+        {
+            repairedLocation.objectdamaged = false;
         }
     }
 
-    void DoDamage()
+    public static void UpdateDamageStatistics(IndividualDamage[] damageLocations)
     {
-        int count = DamageLocationParent.transform.childCount;
+        DamageCount = 0;
 
-        int index = UnityEngine.Random.Range(0, count);
-        Transform spawner = DamageLocationParent.transform.GetChild(index);
-        spawner.gameObject.SetActive(true);
+        foreach (IndividualDamage damageLocation in damageLocations)
+        {
+            if (damageLocation.objectdamaged)
+            {
+                DamageCount++;
+            }
+        }
+
+        DamagePercentage = damageLocations.Length == 0
+            ? 0f
+            : Mathf.Clamp01((float)DamageCount / damageLocations.Length) * 100f;
     }
 }
+

@@ -12,6 +12,7 @@ TagManager:
   - DangerWalls
   - DeathWalls
   - Canister
+  - Mountain
   layers:
   - Default
   - TransparentFX

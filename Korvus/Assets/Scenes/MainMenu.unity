@@ -2139,9 +2139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534fe621f3c7c4f1fa613e770693df68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
-  audioMixer: {fileID: 0}
-  musicSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 928d96293023bf743a181c01563cfc47, type: 2}
+  musicSlider: {fileID: 1728128656}
+  sfxSlider: {fileID: 653677240}
 --- !u!1 &1184230875
 GameObject:
   m_ObjectHideFlags: 0
@@ -2620,9 +2620,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534fe621f3c7c4f1fa613e770693df68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
-  audioMixer: {fileID: 0}
-  musicSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 928d96293023bf743a181c01563cfc47, type: 2}
+  musicSlider: {fileID: 1728128656}
+  sfxSlider: {fileID: 653677240}
 --- !u!1 &1284777752
 GameObject:
   m_ObjectHideFlags: 0

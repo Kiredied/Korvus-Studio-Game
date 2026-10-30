@@ -1,5 +1,9 @@
+using System.Collections;
+using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class ExtractorSocket : MonoBehaviour
 {
@@ -10,7 +14,14 @@ public class ExtractorSocket : MonoBehaviour
     bool canister1insocketcheck = false;
     bool canister2insocketcheck = false;
     bool canister3insocketcheck = false;
-    
+
+    [SerializeField] GameObject Canister1;
+    [SerializeField] GameObject Canister2;
+    [SerializeField] GameObject Canister3;
+
+    [SerializeField] GameObject OutOfBoundsSocket;
+    [SerializeField] GameObject OutOfBoundsSocketTransform;
+
     static public bool anycanisterinsocket = false;
 
 
@@ -19,6 +30,37 @@ public class ExtractorSocket : MonoBehaviour
         
     }
 
+    private void FixedUpdate()
+    {
+        if (Canister1.transform.position == OutOfBoundsSocketTransform.transform.position)
+        {
+            OutOfBoundsSocket.SetActive(false);
+        }
+        else
+        {
+            OutOfBoundsSocket.SetActive(true);
+        }
+
+        if (Canister2.transform.position == OutOfBoundsSocketTransform.transform.position)
+        {
+            OutOfBoundsSocket.SetActive(false);
+        }
+        else
+        {
+            OutOfBoundsSocket.SetActive(true);
+        }
+
+        if (Canister3.transform.position == OutOfBoundsSocketTransform.transform.position)
+        {
+            OutOfBoundsSocket.SetActive(false);
+        }
+        else
+        {
+            OutOfBoundsSocket.SetActive(true);
+        }
+        
+
+    }
     /*
     private void OnTriggerEnter(Collider other)
     {
@@ -82,7 +124,7 @@ public class ExtractorSocket : MonoBehaviour
         }
         
     }*/
-    
+
     public void enterSocket(SelectEnterEventArgs args)
     {
         UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable interactable = args.interactableObject;
@@ -160,4 +202,6 @@ public class ExtractorSocket : MonoBehaviour
             ExtractorCode.resetTempProgressBar2DValue = true;
         }
     }
+
+   
 }

@@ -10779,10 +10779,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MetalAmbient
   clips:
-  - {fileID: 8300000, guid: c6001384ac9a93e4f9a3a000c1cdf91e, type: 3}
-  - {fileID: 8300000, guid: bdfde46cb8b46d5448b224aec4021165, type: 3}
-  - {fileID: 8300000, guid: 0d851c942183485439f3fcc80d95eba2, type: 3}
-  intervalSeconds: 15
+  - {fileID: 8300000, guid: aa83c588587f832418ed6fb5dff93ec7, type: 3}
+  - {fileID: 8300000, guid: eaadff23a4a4b3b4f9b3112f39141145, type: 3}
+  - {fileID: 8300000, guid: 85a8a57a9f368174d8ca5e96379b7333, type: 3}
+  intervalSeconds: 120
 --- !u!82 &1473456276
 AudioSource:
   m_ObjectHideFlags: 0

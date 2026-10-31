@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7827979595164117025}
   - component: {fileID: 2360951137799443706}
+  - component: {fileID: 5580839004791625750}
   m_Layer: 0
   m_Name: DamageHitbox
   m_TagString: Untagged
@@ -53,6 +54,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 5.5, z: 5.5}
   m_Center: {x: -1, y: 0, z: 0}
+--- !u!114 &5580839004791625750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148762576677423199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ce82078732777687aabe2fb8b18fdea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1628167608925982931
 GameObject:
   m_ObjectHideFlags: 0
@@ -4933,7 +4946,6 @@ GameObject:
   - component: {fileID: 442691360060654700}
   - component: {fileID: 8717400623738230061}
   - component: {fileID: 1630564590987568327}
-  - component: {fileID: 7699470719209080765}
   m_Layer: 0
   m_Name: DamageSocket
   m_TagString: Untagged
@@ -4949,7 +4961,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8613352063431523033}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 0
@@ -5069,7 +5081,7 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7699470719209080765}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: IndividualDamage, Assembly-CSharp
         m_MethodName: SocketEnter
         m_Mode: 0
@@ -5084,7 +5096,7 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7699470719209080765}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: IndividualDamage, Assembly-CSharp
         m_MethodName: SocketExit
         m_Mode: 0
@@ -5109,17 +5121,3 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
---- !u!114 &7699470719209080765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8613352063431523033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be35f5335e8f0db4a8f2b1e56587ad34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  requiredHammerHits: 5
-  objectdamaged: 0

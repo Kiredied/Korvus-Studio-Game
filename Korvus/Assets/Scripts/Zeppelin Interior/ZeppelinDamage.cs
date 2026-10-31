@@ -77,7 +77,7 @@ public class ZeppelinDamage : MonoBehaviour
         IndividualDamage selectedLocation = availableLocations[index];
 
         // Get the DamageLocationX parent
-        GameObject damageRoot = selectedLocation.transform.parent.gameObject;
+        GameObject damageRoot = selectedLocation.gameObject;
 
         // Ensure the parent gameobject is active
         damageRoot.SetActive(true);

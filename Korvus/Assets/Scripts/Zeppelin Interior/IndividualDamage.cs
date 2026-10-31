@@ -9,8 +9,22 @@ public class IndividualDamage : MonoBehaviour
 {
     [SerializeField, Min(1)] private int requiredHammerHits = 5;
     [SerializeField, Min(0.1f)] private float plateTimeoutDuration = 10f;
-    [SerializeField, Min(0.1f)] private float plateFadeDuration = 10f;
+    [SerializeField, Min(0.1f)] private float plateFadeDuration = 3f;
     [SerializeField] private Transform plateEjectTransform;
+    [SerializeField] private GameObject plateTeleportTarget;
+    [SerializeField] private XRSocketInteractor socket;
+
+    // 50 FixedUpdate steps = 1 second at 50fps
+    private const int FixedStepsPerSecond = 50;
+
+    // 5 FixedUpdate steps = 0.1 seconds at 50fps, gives the socket time to deactivate before the teleport
+    private const int SocketDeactivateDelaySteps = 5;
+
+    // How long the socket stays off after a timeout eject, so the plate doesn't snap back in
+    private const float SocketEjectReenableDelay = 2f;
+
+    // When the fade-out reaches this alpha (85% transparent), the plate snaps to fully invisible
+    private const float SnapInvisibleAlpha = 0.01f;
 
     public bool objectdamaged;
 
@@ -19,14 +33,40 @@ public class IndividualDamage : MonoBehaviour
     private int hammerHits;
     private float plateSocketTime;
     private bool isRepairing;
-    private Vector3 plateStartPosition;
-    private Quaternion plateStartRotation;
-    private bool platePositionCaptured;
-    private XRSocketInteractor socket;
+    private GameObject damageParticleObject;
+
+    private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
+    private static readonly int ColorId = Shader.PropertyToID("_Color");
+
+    private static Color GetMaterialColor(Material mat)
+    {
+        if (mat.HasProperty(BaseColorId)) return mat.GetColor(BaseColorId);
+        if (mat.HasProperty(ColorId)) return mat.GetColor(ColorId);
+        return Color.white;
+    }
+
+    private static void SetMaterialColor(Material mat, Color color)
+    {
+        if (mat.HasProperty(BaseColorId)) mat.SetColor(BaseColorId, color);
+        if (mat.HasProperty(ColorId)) mat.SetColor(ColorId, color);
+    }
 
     private void Start()
     {
-        socket = GetComponentInParent<XRSocketInteractor>();
+        if (socket == null)
+        {
+            Debug.LogWarning("IndividualDamage: no socket assigned on " + name);
+        }
+
+        ParticleSystem damageParticles = GetComponentInChildren<ParticleSystem>(true);
+        if (damageParticles != null)
+        {
+            damageParticleObject = damageParticles.gameObject;
+        }
+        else
+        {
+            Debug.LogWarning("IndividualDamage: no particle system found under " + name);
+        }
     }
 
     public void SocketEnter(SelectEnterEventArgs args)
@@ -39,20 +79,16 @@ public class IndividualDamage : MonoBehaviour
         IXRSelectInteractable interactable = args.interactableObject;
         activePlate = interactable.transform.gameObject;
 
-        // Capture start position on first socket
-        if (!platePositionCaptured)
-        {
-            plateStartPosition = activePlate.transform.position;
-            plateStartRotation = activePlate.transform.rotation;
-            platePositionCaptured = true;
-
-            Debug.Log("Plate start position captured: " + plateStartPosition);
-        }
-
         plateInTrigger = true;
         hammerHits = 0;
         plateSocketTime = Time.time;
         isRepairing = false;
+
+        // Hide the damage particles while a plate is socketed
+        if (damageParticleObject != null)
+        {
+            damageParticleObject.SetActive(false);
+        }
 
         Debug.Log("Repair plate socketed: " + activePlate.name);
     }
@@ -80,6 +116,12 @@ public class IndividualDamage : MonoBehaviour
         plateInTrigger = false;
         hammerHits = 0;
 
+        // Show the damage particles again if this location is still damaged
+        if (objectdamaged && damageParticleObject != null)
+        {
+            damageParticleObject.SetActive(true);
+        }
+
         Debug.Log("Repair plate removed.");
     }
 
@@ -93,7 +135,7 @@ public class IndividualDamage : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnHammerTrigger(Collider other)
     {
         if (other.gameObject.name == "HammerTriggerCollider")
         {
@@ -109,6 +151,9 @@ public class IndividualDamage : MonoBehaviour
         }
 
         hammerHits++;
+
+        // Reset the timeout so the plate only falls off after a pause in hits
+        plateSocketTime = Time.time;
 
         Debug.Log(
             "Hammer hit " + hammerHits + "/" + requiredHammerHits
@@ -133,11 +178,25 @@ public class IndividualDamage : MonoBehaviour
 
             // Force deselect from socket
             socket.interactionManager.SelectExit(socket, activePlate.GetComponent<IXRSelectInteractable>());
+
+            // Turn the socket off so the plate doesn't snap straight back in, then re-enable it after a delay
+            socket.gameObject.SetActive(false);
+            StartCoroutine(ReenableSocketAfterDelay(socket.gameObject, SocketEjectReenableDelay));
         }
 
         activePlate = null;
         plateInTrigger = false;
         hammerHits = 0;
+    }
+
+    private IEnumerator ReenableSocketAfterDelay(GameObject socketObject, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (socketObject != null)
+        {
+            socketObject.SetActive(true);
+        }
     }
 
     private void Repair()
@@ -150,17 +209,6 @@ public class IndividualDamage : MonoBehaviour
         if (particleSystem != null)
         {
             particleSystem.Stop();
-        }
-
-        if (activePlate != null)
-        {
-            Collider[] plateColliders =
-                activePlate.GetComponentsInChildren<Collider>();
-
-            foreach (Collider plateCollider in plateColliders)
-            {
-                plateCollider.enabled = false;
-            }
         }
 
         objectdamaged = false;
@@ -180,68 +228,84 @@ public class IndividualDamage : MonoBehaviour
         activePlate = null;
     }
 
-    private System.Collections.IEnumerator FadePlateAndReset(GameObject plate)
+    private IEnumerator FadePlateAndReset(GameObject plate)
     {
         if (plate == null)
         {
             yield break;
         }
 
-        // Force eject from socket FIRST
-        if (socket != null)
-        {
-            IXRSelectInteractable selectInteractable = plate.GetComponent<IXRSelectInteractable>();
-            if (selectInteractable != null)
-            {
-                socket.interactionManager.SelectExit(socket, selectInteractable);
-                Debug.Log("Plate ejected from socket");
-            }
-        }
-
         // Get all renderers on the plate and its children
-        Renderer[] renderers = plate.GetComponentsInChildren<Renderer>();
+        Renderer[] renderers = plate.GetComponentsInChildren<Renderer>(true);
         if (renderers.Length == 0)
         {
             Debug.LogWarning("FadePlateAndReset: no renderer found on " + plate.name);
             yield break;
         }
 
-        // Store original colors for all materials
+        // Store original colors, forcing alpha to 1 so the plate always starts fully opaque
         Color[] originalColors = new Color[renderers.Length];
         for (int i = 0; i < renderers.Length; i++)
         {
-            originalColors[i] = renderers[i].material.color;
+            Color c = GetMaterialColor(renderers[i].material);
+            c.a = 1f;
+            originalColors[i] = c;
+            SetMaterialColor(renderers[i].material, c);
         }
-
-        float elapsedTime = 0f;
 
         Debug.Log("Starting fade-out for plate: " + plate.name);
 
-        // Fade out
-        while (elapsedTime < plateFadeDuration)
+        // Fade out until the alpha reaches the snap threshold. The loop only exits through that check,
+        // so nothing after it runs until the plate has reached SnapInvisibleAlpha.
+        float elapsedTime = 0f;
+        while (true)
         {
             elapsedTime += Time.deltaTime;
             float alpha = Mathf.Lerp(1f, 0f, elapsedTime / plateFadeDuration);
+
+            if (alpha <= SnapInvisibleAlpha)
+            {
+                break;
+            }
 
             for (int i = 0; i < renderers.Length; i++)
             {
                 Color fadeColor = originalColors[i];
                 fadeColor.a = alpha;
-                renderers[i].material.color = fadeColor;
+                SetMaterialColor(renderers[i].material, fadeColor);
             }
 
             yield return null;
         }
 
-        // Fully transparent
+        // Snap to fully invisible at the threshold
         for (int i = 0; i < renderers.Length; i++)
         {
             Color fadeColor = originalColors[i];
             fadeColor.a = 0f;
-            renderers[i].material.color = fadeColor;
+            SetMaterialColor(renderers[i].material, fadeColor);
         }
 
-        Debug.Log("Plate faded. Teleporting to: " + plateStartPosition);
+        if (plateTeleportTarget == null)
+        {
+            Debug.LogWarning("FadePlateAndReset: no teleport target assigned on " + name);
+            yield break;
+        }
+
+        // Deactivate the socket the plate is sitting in, then wait so it takes effect before the teleport
+        GameObject socketObject = null;
+        if (socket != null)
+        {
+            socketObject = socket.gameObject;
+            socketObject.SetActive(false);
+        }
+
+        for (int i = 0; i < SocketDeactivateDelaySteps; i++)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        Debug.Log("Plate faded. Teleporting to: " + plateTeleportTarget.name);
 
         // Disable physics before moving
         Rigidbody rb = plate.GetComponent<Rigidbody>();
@@ -252,9 +316,9 @@ public class IndividualDamage : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
         }
 
-        // Teleport plate
-        plate.transform.position = plateStartPosition;
-        plate.transform.rotation = plateStartRotation;
+        // Teleport plate to the target transform
+        plate.transform.position = plateTeleportTarget.transform.position;
+        plate.transform.rotation = plateTeleportTarget.transform.rotation;
 
         // Re-enable physics
         if (rb != null)
@@ -262,29 +326,40 @@ public class IndividualDamage : MonoBehaviour
             rb.isKinematic = false;
         }
 
-        // Fade in
-        elapsedTime = 0f;
-        while (elapsedTime < plateFadeDuration)
+        // Wait 1 second while hidden (50 FixedUpdate steps)
+        for (int i = 0; i < FixedStepsPerSecond; i++)
         {
-            elapsedTime += Time.deltaTime;
-            float alpha = Mathf.Lerp(0f, 1f, elapsedTime / plateFadeDuration);
+            yield return new WaitForFixedUpdate();
+        }
 
-            for (int i = 0; i < renderers.Length; i++)
+        // Fade in over 1 second (50 FixedUpdate steps)
+        for (int i = 1; i <= FixedStepsPerSecond; i++)
+        {
+            float t = (float)i / FixedStepsPerSecond;
+            float alpha = Mathf.SmoothStep(0f, 1f, t);
+
+            for (int j = 0; j < renderers.Length; j++)
             {
-                Color fadeColor = originalColors[i];
+                Color fadeColor = originalColors[j];
                 fadeColor.a = alpha;
-                renderers[i].material.color = fadeColor;
+                SetMaterialColor(renderers[j].material, fadeColor);
             }
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
 
         // Fully opaque
         for (int i = 0; i < renderers.Length; i++)
         {
-            renderers[i].material.color = originalColors[i];
+            SetMaterialColor(renderers[i].material, originalColors[i]);
         }
 
-        Debug.Log("Plate reset to start position: " + plateStartPosition);
+        // Reactivate the socket now that the plate is fully visible
+        if (socketObject != null)
+        {
+            socketObject.SetActive(true);
+        }
+
+        Debug.Log("Plate reset and visible at: " + plateTeleportTarget.name);
     }
 }

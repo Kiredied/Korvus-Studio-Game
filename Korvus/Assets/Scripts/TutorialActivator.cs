@@ -9,8 +9,9 @@ public class TutorialActivator : MonoBehaviour
 
     void Update()
     {
-        if (DangerZone2D.DangerZone && !activated)
+        if (DangerZone2D.DangerZone && !activated && !DangerZone2D.DangerWall)
         {
+            // i added "&& !DangerZone2D.DangerWall" so the tutorial doesnt activate when going in the damgerwall, only the dangerzone
             prefab1.SetActive(true);
             prefab2.SetActive(true);
 

@@ -3,7 +3,27 @@ guid: fb50e9ef3b043f0469eabaa082da9451
 ModelImporter:
   serializedVersion: 24300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Baloon_Cloth
+    second: {fileID: 2100000, guid: 6f68efd4820f421438415c409558627d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Baloon_Fins
+    second: {fileID: 2100000, guid: f3f115c3cad78c44fad297bec393eb00, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Baloon_Metal
+    second: {fileID: 2100000, guid: c7fb8a58845f3694a94aac1d1617ebb8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Outside_Cabin_Material
+    second: {fileID: 2100000, guid: e7f343581dd5cab478add8f7da297cdf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -46,6 +46,17 @@ public class DarknessController : MonoBehaviour
             }
 
         }
+        if (DangerZone2D.MountainDeath)
+        {
+            if (!log) Debug.Log("Fading consciousness. (Post-Processing)"); log = true;
+            time += 1;
 
+            colorAdjustments.postExposure.value = ((colorAdjustments.postExposure.value * (101 - 80) + darknessLevel) / (102 - 80));
+            if (time > 50)
+            {
+                SceneManager.LoadScene("DeathScene");
+            }
+
+        }
     }
 }

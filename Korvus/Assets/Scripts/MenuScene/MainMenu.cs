@@ -68,7 +68,7 @@ public class MainMenu : MonoBehaviour
     {
         // errors out so i commented it -Diederik
         
-        musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        //musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
     }
 }

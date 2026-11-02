@@ -9,7 +9,7 @@ public class ZeppelinDamage : MonoBehaviour
     static public float maxDamageInterval = 60f;
     [SerializeField] private GameObject damageLocationParent;
 
-    public static int DamageCount { get; private set; }
+    public static int DamageCount { get; set; }
     public static float DamagePercentage { get; private set; }
 
     private float damageTimer;
@@ -30,6 +30,15 @@ public class ZeppelinDamage : MonoBehaviour
 
     private void FixedUpdate()
     {
+        var killed = false;
+        if (DamagePercentage >= 100f)
+        {
+            if (!killed)
+            {
+                killed = true;
+                DangerZone2D.MountainDeath = true;
+            }
+        }
         if (damageLocationParent == null)
         {
             return;
@@ -48,22 +57,22 @@ public class ZeppelinDamage : MonoBehaviour
 
         if (DangerZone2D.DangerZone || !DangerZone2D.DangerWall)
         {
-            minDamageInterval = 15f;
-            maxDamageInterval = 30f;
+            minDamageInterval = 20f;
+            maxDamageInterval = 35f;
         }
         else
         {
             if (DangerZone2D.PreviousDangerZone)
             {
-                minDamageInterval = 20f;
-                maxDamageInterval = 40f;
+                minDamageInterval = 30f;
+                maxDamageInterval = 50f;
             }
             else
             {
                 if (DangerZone2D.DangerWall)
                 {
-                    minDamageInterval = 10f;
-                    maxDamageInterval = 15f;
+                    minDamageInterval = 15f;
+                    maxDamageInterval = 25f;
                 }
                 else
                 {
@@ -74,8 +83,8 @@ public class ZeppelinDamage : MonoBehaviour
                     }
                     else
                     {
-                        minDamageInterval = 20f;
-                        maxDamageInterval = 60f;
+                        minDamageInterval = 45f;
+                        maxDamageInterval = 70f;
                     }
                 }
             }

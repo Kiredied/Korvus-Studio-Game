@@ -11850,13 +11850,25 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1993803237505693004, guid: 66b0728a2c998144da26d8914bfc4d6c, type: 3}
+--- !u!114 &1495315908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495315904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b62461ffb174454488509d6cbf0c65d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MountainDeath
 --- !u!1001 &1499155063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15466,6 +15478,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 66b0728a2c998144da26d8914bfc4d6c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1495315907}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 66b0728a2c998144da26d8914bfc4d6c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1495315908}
   m_SourcePrefab: {fileID: 100100000, guid: 66b0728a2c998144da26d8914bfc4d6c, type: 3}
 --- !u!1001 &1693212115
 PrefabInstance:
@@ -17550,7 +17565,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1.9999999, z: 1.0000004}
+  m_Size: {x: 0.1, y: 1.9999999, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1903888485
 Rigidbody:
@@ -18750,7 +18765,6 @@ GameObject:
   - component: {fileID: 5361718946460250797}
   - component: {fileID: 5361718946460250798}
   - component: {fileID: 5361718946460250799}
-  - component: {fileID: 5361718946460250800}
   m_Layer: 0
   m_Name: Player
   m_TagString: 2DPlayer
@@ -19800,18 +19814,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   MiniMapFlickerObject: {fileID: 1456867717}
   MapFlickerObject: {fileID: 36276082}
---- !u!114 &5361718946460250800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785049007168878394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b62461ffb174454488509d6cbf0c65d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MountainDeath
 --- !u!1 &6078909313732696109
 GameObject:
   m_ObjectHideFlags: 0

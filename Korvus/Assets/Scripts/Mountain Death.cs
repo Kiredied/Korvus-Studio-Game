@@ -1,14 +1,21 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class MountainDeath : MonoBehaviour
 {
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.tag == "Mountain")
+        if (this.gameObject.CompareTag("Mountain"))
         {
-        SceneManager.LoadScene("DeathScreen");
+            if (collision.gameObject.tag == "2DPlayer")
+            {
+                SceneManager.LoadScene("DeathScreen");
+            }
         }
     }
 

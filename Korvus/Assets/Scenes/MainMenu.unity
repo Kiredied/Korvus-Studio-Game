@@ -1262,11 +1262,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicLibrary
   musicTracks:
   - trackName: MainMenu
-    audioClip: {fileID: 8300000, guid: 3b7124c87f7eb4302af91864beb8a637, type: 3}
+    audioClip: {fileID: 8300000, guid: 64eac97aadf784840862ae43f3922dde, type: 3}
   - trackName: Game
     audioClip: {fileID: 8300000, guid: a60789b28550145e9ac9e9d5c47010da, type: 3}
-  - trackName: 
-    audioClip: {fileID: 0}
+  - trackName: DangerZone
+    audioClip: {fileID: 8300000, guid: 381e95fd3d8bd43df976101e9bb4b922, type: 3}
+  - trackName: Track3
+    audioClip: {fileID: 8300000, guid: 8c3c30de143864b3c9a02dea1fa2f838, type: 3}
 --- !u!1 &628092351
 GameObject:
   m_ObjectHideFlags: 0

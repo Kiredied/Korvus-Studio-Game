@@ -455,7 +455,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1794056436}
+  - {fileID: 150849314}
   - {fileID: 1647557473}
   - {fileID: 71598436}
   - {fileID: 1379522226}
@@ -2201,17 +2201,17 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150849313}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.061048605, y: 0, z: 0, w: 0.99813485}
+  m_LocalPosition: {x: -0.268, y: 1.2382059, z: -1.414}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 403696286}
   - {fileID: 490870428}
   - {fileID: 695828551}
   - {fileID: 1531053923}
-  m_Father: {fileID: 1794056436}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 22829865}
+  m_LocalEulerAnglesHint: {x: -7, y: 0, z: 0}
 --- !u!1 &162008405
 GameObject:
   m_ObjectHideFlags: 0
@@ -3954,6 +3954,7 @@ RectTransform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 1794056436}
   - {fileID: 68660943}
   - {fileID: 737722873}
   - {fileID: 949868386}
@@ -7452,35 +7453,47 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 22829865}
+    m_TransformParent: {fileID: 455974110}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6c49d24b82bc80b4e8c4fc83d8b5cc68, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 199.99997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c49d24b82bc80b4e8c4fc83d8b5cc68, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 199.99998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c49d24b82bc80b4e8c4fc83d8b5cc68, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 200.00002
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6c49d24b82bc80b4e8c4fc83d8b5cc68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.268
+      value: 0.68219036
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c49d24b82bc80b4e8c4fc83d8b5cc68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2382059
+      value: -0.115400076
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c49d24b82bc80b4e8c4fc83d8b5cc68, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.414
+      value: 0.18612546
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c49d24b82bc80b4e8c4fc83d8b5cc68, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.66262007
+      value: 0.50000006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c49d24b82bc80b4e8c4fc83d8b5cc68, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7489558
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c49d24b82bc80b4e8c4fc83d8b5cc68, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c49d24b82bc80b4e8c4fc83d8b5cc68, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.50000006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c49d24b82bc80b4e8c4fc83d8b5cc68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7504,10 +7517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6c49d24b82bc80b4e8c4fc83d8b5cc68, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 150849314}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c49d24b82bc80b4e8c4fc83d8b5cc68, type: 3}
 --- !u!1 &795885747 stripped

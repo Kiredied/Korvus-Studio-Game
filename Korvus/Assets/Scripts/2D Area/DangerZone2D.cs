@@ -91,8 +91,8 @@ public class DangerZone2D : MonoBehaviour
                 DangerZone = true;
                 // notify player that they entered current danger zone
 
-                ZeppelinDamage.minDamageInterval = 10f;
-                ZeppelinDamage.maxDamageInterval = 15f;
+                /*ZeppelinDamage.minDamageInterval = 15f;
+                ZeppelinDamage.maxDamageInterval = 30f;*/
             }
         }
 
@@ -101,8 +101,8 @@ public class DangerZone2D : MonoBehaviour
             Debug.Log("PreviousDangerZone entered");
             // notify player that they entered previous danger zone
             PreviousDangerZone = true;
-            ZeppelinDamage.minDamageInterval = 20f;
-            ZeppelinDamage.maxDamageInterval = 40f;
+            /*ZeppelinDamage.minDamageInterval = 20f;
+            ZeppelinDamage.maxDamageInterval = 40f;*/
         }
 
 
@@ -112,8 +112,8 @@ public class DangerZone2D : MonoBehaviour
             // give danger warning
             DangerWall = true;
             DangerZone = true;
-            ZeppelinDamage.minDamageInterval = 10f;
-            ZeppelinDamage.maxDamageInterval = 15f;
+            /*ZeppelinDamage.minDamageInterval = 10f;
+            ZeppelinDamage.maxDamageInterval = 15f;*/
         }
         if (this.gameObject.CompareTag("DeathWalls"))
         {
@@ -128,8 +128,8 @@ public class DangerZone2D : MonoBehaviour
             DeathFlickering.instance.StartCoroutine(DeathFlickering.instance.MinimapFlicker());
             DeathFlickering.instance.StartCoroutine(DeathFlickering.instance.MapFlicker());
             DeathFlickering.instance.StartCoroutine(DeathFlickering.instance.LightsFlicker());
-            ZeppelinDamage.minDamageInterval = 2f;
-            ZeppelinDamage.maxDamageInterval = 5f;
+            /*ZeppelinDamage.minDamageInterval = 2f;
+            ZeppelinDamage.maxDamageInterval = 5f;*/
         }
 
     }

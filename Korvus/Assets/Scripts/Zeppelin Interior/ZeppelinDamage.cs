@@ -45,6 +45,41 @@ public class ZeppelinDamage : MonoBehaviour
         damageTimer = 0f;
         nextDamageTime = GetNextDamageTime();
         DoDamage();
+
+        if (DangerZone2D.DangerZone || !DangerZone2D.DangerWall)
+        {
+            minDamageInterval = 15f;
+            maxDamageInterval = 30f;
+        }
+        else
+        {
+            if (DangerZone2D.PreviousDangerZone)
+            {
+                minDamageInterval = 20f;
+                maxDamageInterval = 40f;
+            }
+            else
+            {
+                if (DangerZone2D.DangerWall)
+                {
+                    minDamageInterval = 10f;
+                    maxDamageInterval = 15f;
+                }
+                else
+                {
+                    if (DangerZone2D.DeadZone)
+                    {
+                        minDamageInterval = 2f;
+                        maxDamageInterval = 5f;
+                    }
+                    else
+                    {
+                        minDamageInterval = 20f;
+                        maxDamageInterval = 60f;
+                    }
+                }
+            }
+        }
     }
 
     private float GetNextDamageTime()

@@ -1,6 +1,8 @@
+using Palmmedia.ReportGenerator.Core;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DarknessController : MonoBehaviour
@@ -27,7 +29,7 @@ public class DarknessController : MonoBehaviour
         
     }
 
-   
+    int time = 0;
     void FixedUpdate()
     {
         // 50 fps
@@ -35,8 +37,14 @@ public class DarknessController : MonoBehaviour
         if (DangerZone2D.ConsiousnessRemover)
         { 
             if (!log) Debug.Log("Fading consciousness. (Post-Processing)"); log = true;
+            time += 1;
 
             colorAdjustments.postExposure.value = ((colorAdjustments.postExposure.value * (101 - DarknessSpeed) + darknessLevel) / (102 - DarknessSpeed));
+            if(time > 250)
+            {
+                SceneManager.LoadScene("DeathScene");
+            }
+
         }
 
     }

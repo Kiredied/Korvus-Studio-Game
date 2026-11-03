@@ -10,6 +10,7 @@ public class ResetEverything : MonoBehaviour
     static Vector3 OriginalPlayerRotation;
 
 
+    static public bool ResetTriggered = false;
     [SerializeField] GameObject CanisterSocket1;
     [SerializeField] GameObject CanisterSocket2;
     [SerializeField] GameObject CanisterSocket3;
@@ -131,7 +132,7 @@ public class ResetEverything : MonoBehaviour
             _instance.DamageSheetSocket4.SetActive(true);
             _instance.DamageSheetSocket5.SetActive(true);
 
-
+            ResetTriggered = false;
         }
 
     }
@@ -159,6 +160,10 @@ public class ResetEverything : MonoBehaviour
 
         Sheet3Location = Sheet3.transform.position;
         Sheet3Rotation = Sheet3.transform.eulerAngles;
+        if (ResetTriggered)
+        {
+            StartCoroutine(ResetAll());
+        }
     }
 
     void Update()

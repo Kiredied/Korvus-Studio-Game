@@ -165,6 +165,7 @@ public class DangerZone2D : MonoBehaviour
                 //SceneManager.LoadScene("DeathScene");
                 MountainDeath = true;
                 DarknessAdder = true;
+                
             }
         }
     }

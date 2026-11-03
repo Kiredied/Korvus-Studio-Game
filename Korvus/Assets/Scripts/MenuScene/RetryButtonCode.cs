@@ -14,7 +14,7 @@ public class RetryButtonCode : MonoBehaviour
         
     }
 
-    void ResetButtonPressed()
+    static public void ResetButtonPressed()
     {
         ResetEverything.ResetTriggered = true;
     }
